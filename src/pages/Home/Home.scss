@@ -1,0 +1,11 @@
+.home {
+    .section-header {
+        font-size: 12px;
+    }
+
+    .regular-expenses {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+    }
+}
