@@ -1,0 +1,51 @@
+.expense-history-container {
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 5px;
+    padding: 3px 0;
+    margin-bottom: 15px;
+
+    .date-time {
+        font-size: 10px;
+        margin-bottom: 10px;
+
+        span {
+            padding: 3px 10px;
+            background-color: teal;
+            color: white;
+            border-bottom-right-radius: 5px;
+        }
+    }
+
+    .details-grid {
+        display: inline-grid;
+        grid-template-columns: 35px 25px 1fr min-content;
+        grid-gap: 10px;
+        width: 100%;
+
+        .expense-icon {
+            display: grid;
+            place-items: center;
+
+            .MuiSvgIcon-root {
+                font-size: 16px;
+            }
+        }
+
+        .amount {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 0, 0, .2);
+            text-align: center;
+            align-self: center;
+            font-size: 12px;
+            display: grid;
+            place-items: center;
+        }
+
+        .title {
+            margin: 0;
+            align-self: center;
+        }
+    }
+}

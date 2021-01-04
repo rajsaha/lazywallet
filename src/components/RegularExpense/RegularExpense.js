@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ExpenseIcon from './ExpenseIcon/ExpenseIcon';
+import ExpenseIcon from '../ExpenseIcon/ExpenseIcon';
 import Button from '@material-ui/core/Button';
 import './RegularExpense.scss';
 
