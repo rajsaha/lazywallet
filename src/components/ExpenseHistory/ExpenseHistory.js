@@ -27,7 +27,7 @@ export class ExpenseHistory extends Component {
 
                     <p className="title">{this.props.data.title}</p>
                     <IconButton>
-                        <Clear onClick={this.removeExpense} />
+                        <Clear />
                     </IconButton>
                 </div>
             </div>

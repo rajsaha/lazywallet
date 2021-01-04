@@ -3,6 +3,7 @@ import { RegularExpense } from "../../components/RegularExpense/RegularExpense";
 import { ExpenseHistory } from "../../components/ExpenseHistory/ExpenseHistory";
 import DummyData from "../../helper/dummy-data/dummy-data.service";
 import './Home.scss';
+import AddExpense from "../../components/AddExpense/AddExpense";
 
 export class Home extends Component {
     render() {
@@ -23,6 +24,11 @@ export class Home extends Component {
                     {latExps.slice(0,2).map((value, index) => {
                         return <ExpenseHistory key={value.id} data={value} />
                     })}
+                </div>
+
+                <h3 className="section-header">Add an Expense</h3>
+                <div className="add-expense">
+                    <AddExpense />
                 </div>
             </div>
         );
