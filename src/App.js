@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import { Home, History, AttachMoney, Person } from '@material-ui/icons';
-import { Home as HomeRoute } from './pages/Home/Home';
+import Homepage from './pages/Home/Home';
 import {
   BrowserRouter as Router, Routes, Route
 } from "react-router-dom";
@@ -26,7 +26,7 @@ function App() {
       <div className="content">
         <Router>
           <Routes>
-            <Route path="/" element={<HomeRoute />} />
+            <Route path="/" element={<Homepage />} />
           </Routes>
         </Router>
       </div>

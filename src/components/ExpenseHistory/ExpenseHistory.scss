@@ -1,18 +1,26 @@
 .expense-history-container {
-    border: 1px solid rgba(0, 0, 0, .1);
+    border: 1px solid #f3f3f3;
     border-radius: 5px;
     padding: 3px 0;
     margin-bottom: 15px;
+    position: relative;
+    -webkit-box-shadow: 0 6px 6px -8px #777;
+    -moz-box-shadow: 0 6px 6px -8px #777;
+    box-shadow: 0 6px 6px -8px #777;
 
     .date-time {
+        position: absolute;
+        top: -8px;
+        right: 10px;
         font-size: 10px;
-        margin-bottom: 10px;
 
         span {
             padding: 3px 10px;
-            background-color: teal;
+            background-color: rgb(85, 73, 255);
             color: white;
-            border-bottom-right-radius: 5px;
+            border-radius: 5px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
         }
     }
 
@@ -41,11 +49,16 @@
             font-size: 12px;
             display: grid;
             place-items: center;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
         }
 
         .title {
             margin: 0;
             align-self: center;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 14px;
         }
     }
 }

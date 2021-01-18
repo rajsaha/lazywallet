@@ -1,4 +1,12 @@
 .inputs {
     display: grid;
     grid-template-columns: 2fr 1fr;
+    grid-gap: 15px;
+    margin-bottom: 15px;
+}
+
+.add-button {
+    button {
+        width: 100%;
+    }
 }
