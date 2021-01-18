@@ -34,7 +34,7 @@ function AddExpense() {
                     <TextField variant="outlined" value={amount} onChange={(e) => {setAmount(e.target.value)}} />
                 </div>
                 <div className="add-button">
-                    <Button variant="contained" color="primary">Add</Button>
+                    <Button variant="outlined" color="primary">Add Expense</Button>
                 </div>
             </form>
         </>
