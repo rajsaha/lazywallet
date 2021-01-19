@@ -1,6 +1,6 @@
 .home {
     display: grid;
-    grid-template-rows: min-content 1fr min-content;
+    grid-template-rows: 1fr 1fr 1fr;
     grid-auto-columns: 100%;
     height: 100%;
 
@@ -10,7 +10,7 @@
             font-family: 'Inter', sans-serif;
         }
 
-        &:nth-child(1) {
+        &:nth-child(2) {
             align-self: center;
 
             .section-header {
@@ -18,7 +18,7 @@
             }
         }
 
-        &:nth-child(2) {
+        &:nth-child(1) {
             padding: 0 15px;
         }
 

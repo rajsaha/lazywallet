@@ -4,6 +4,7 @@ import './AddExpense.scss';
 
 function AddExpense() {
     const [type, setType] = useState('');
+    const [title, setTitle] = useState('');
     const [amount, setAmount] = useState(0);
     const handleChange = (event) => {
         setType(event.target.value);
@@ -13,6 +14,7 @@ function AddExpense() {
         <>
             <form noValidate autoComplete="off">
                 <div className="inputs">
+                    <TextField variant="outlined" placeholder="Title" size="small" value={title} onChange={(e) => {setTitle(e.target.value)}} />
                     <TextField
                         select
                         variant="outlined"
@@ -32,7 +34,7 @@ function AddExpense() {
                         <MenuItem value={9}>Debt</MenuItem>
                         <MenuItem value={10}>Other</MenuItem>
                     </TextField>
-                    <TextField variant="outlined" size="small" value={amount} onChange={(e) => {setAmount(e.target.value)}} />
+                    <TextField variant="outlined" placeholder="Amount" size="small" value={amount} onChange={(e) => {setAmount(e.target.value)}} />
                 </div>
                 <div className="add-button">
                     <Button variant="outlined" color="primary">Add Expense</Button>
