@@ -12,7 +12,7 @@ function LatestExpenses() {
 
     useEffect(() => {
         setLatestExpsHeight(latExpsRef.current.offsetHeight);
-        let _numOfEH = Math.round(latExpsHeight / 80) - 1;
+        let _numOfEH = Math.round(latExpsHeight / 75) - 1;
         if (_numOfEH < 0) {
             _numOfEH = 1;
         }
