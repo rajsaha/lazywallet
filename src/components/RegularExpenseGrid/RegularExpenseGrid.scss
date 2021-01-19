@@ -1,5 +1,21 @@
+:root {
+    --gutter: 10px;
+}
+
 .regular-expenses {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
+    // display: flex;
+    // flex-wrap: nowrap;
+    // overflow-x: auto;
+
+
+    display: grid;
+    grid-gap: calc(var(--gutter) / 2);
+    grid-template-columns: repeat(6, max-content);
+    grid-template-rows: minmax(auto, 1fr);
+
+    overflow-x: scroll;
+    scroll-snap-type: x proximity;
+    padding-bottom: calc(.75 * var(--gutter));
+    margin-bottom: calc(-.25 * var(--gutter));
+    padding: 0 20px;
 }

@@ -8,13 +8,13 @@ function Homepage() {
     return (
         <div className="home">
             <div className="section">
-                <h3 className="section-header">Latest Expenses</h3>
-                <LatestExpenses></LatestExpenses>
+                <h3 className="section-header">Regular Expenses</h3>
+                <RegularExpenseGrid></RegularExpenseGrid>
             </div>
 
             <div className="section">
-                <h3 className="section-header">Regular Expenses</h3>
-                <RegularExpenseGrid></RegularExpenseGrid>
+                <h3 className="section-header">Latest Expenses</h3>
+                <LatestExpenses></LatestExpenses>
             </div>
 
             <div className="section">

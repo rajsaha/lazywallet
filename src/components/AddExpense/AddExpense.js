@@ -16,6 +16,7 @@ function AddExpense() {
                     <TextField
                         select
                         variant="outlined"
+                        size="small"
                         label="Type"
                         value={type}
                         onChange={handleChange}>
@@ -31,7 +32,7 @@ function AddExpense() {
                         <MenuItem value={9}>Debt</MenuItem>
                         <MenuItem value={10}>Other</MenuItem>
                     </TextField>
-                    <TextField variant="outlined" value={amount} onChange={(e) => {setAmount(e.target.value)}} />
+                    <TextField variant="outlined" size="small" value={amount} onChange={(e) => {setAmount(e.target.value)}} />
                 </div>
                 <div className="add-button">
                     <Button variant="outlined" color="primary">Add Expense</Button>

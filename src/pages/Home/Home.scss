@@ -1,16 +1,30 @@
 .home {
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: min-content 1fr min-content;
     grid-auto-columns: 100%;
     height: 100%;
+
     .section {
         .section-header {
             font-size: 12px;
             font-family: 'Inter', sans-serif;
         }
-    }
 
-    .section:last-child {
-        align-self: end;
+        &:nth-child(1) {
+            align-self: center;
+
+            .section-header {
+                padding: 0 15px;
+            }
+        }
+
+        &:nth-child(2) {
+            padding: 0 15px;
+        }
+
+        &:last-child {
+            align-self: end;
+            padding: 0 15px;
+        }
     }
 }
