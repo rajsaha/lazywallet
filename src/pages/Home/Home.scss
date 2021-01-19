@@ -1,12 +1,16 @@
 .home {
-    .section-header {
-        font-size: 12px;
-        font-family: 'Inter', sans-serif;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-auto-columns: 100%;
+    height: 100%;
+    .section {
+        .section-header {
+            font-size: 12px;
+            font-family: 'Inter', sans-serif;
+        }
     }
 
-    .regular-expenses {
-        display: flex;
-        flex-wrap: nowrap;
-        overflow-x: auto;
+    .section:last-child {
+        align-self: end;
     }
 }

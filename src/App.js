@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import { Home, History, AttachMoney, Person } from '@material-ui/icons';
-import Homepage from './pages/Home/Home';
+import Homepage from '@Pages/Home/Home';
 import {
   BrowserRouter as Router, Routes, Route
 } from "react-router-dom";

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import ExpenseIcon from '../ExpenseIcon/ExpenseIcon';
+import ExpenseIcon from '@Components/ExpenseIcon/ExpenseIcon';
 import Clear from '@material-ui/icons/Clear';
 import './ExpenseHistory.scss';
 import { IconButton } from '@material-ui/core';
