@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.scss';
 import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
@@ -6,8 +6,9 @@ import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import { Home, History, AttachMoney, Person } from '@material-ui/icons';
 import Homepage from '@Pages/Home/Home';
 import {
-  BrowserRouter as Router, Routes, Route
+  BrowserRouter as Router, Routes, Route,
 } from "react-router-dom";
+import Regulars from './pages/Regulars/Regulars';
 
 const useStyles = makeStyles({
   root: {
@@ -21,20 +22,38 @@ const useStyles = makeStyles({
 
 function App() {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
+  const [path, setPath] = useState('');
+  const [element, setElement] = useState(<Homepage />);
+  
   return (
     <div className="content-container">
       <div className="content">
         <Router>
           <Routes>
-            <Route path="/" element={<Homepage />} />
+            <Route path={path} element={element} />
           </Routes>
         </Router>
       </div>
       <BottomNavigation
         value={value}
         onChange={(event, newValue) => {
+          console.log(value);
           setValue(newValue);
+          switch (value) {
+            case 1:
+              setPath('/');
+              setElement(<Homepage />);
+              break;
+            case 0:
+              setPath('/regulars');
+              setElement(<Regulars />);
+              break;
+            default:
+              setPath('/');
+              setElement(<Homepage />);
+              break;
+          }
         }}
         showLabels
         className={classes.root}
