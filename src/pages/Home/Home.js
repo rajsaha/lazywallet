@@ -3,6 +3,7 @@ import './Home.scss';
 import AddExpense from "@Components/AddExpense/AddExpense";
 import RegularExpenseGrid from "@Components/RegularExpenseGrid/RegularExpenseGrid";
 import SpentOn from "@Components/SpentOn/SpentOn";
+import { withRouter } from "react-router";
 
 function Homepage() {
     return (
@@ -30,4 +31,4 @@ function Homepage() {
     );
 }
 
-export default Homepage;
+export default withRouter(Homepage);

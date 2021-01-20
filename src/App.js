@@ -6,9 +6,9 @@ import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import { Home, History, AttachMoney, Person } from '@material-ui/icons';
 import Homepage from '@Pages/Home/Home';
 import {
-  BrowserRouter as Router, Routes, Route,
+  BrowserRouter as Router, Route, Switch, useHistory
 } from "react-router-dom";
-import Regulars from './pages/Regulars/Regulars';
+import Regulars from '@Pages/Regulars/Regulars';
 
 const useStyles = makeStyles({
   root: {
@@ -23,16 +23,16 @@ const useStyles = makeStyles({
 function App() {
   const classes = useStyles();
   const [value, setValue] = useState(0);
-  const [path, setPath] = useState('');
-  const [element, setElement] = useState(<Homepage />);
-  
+  let history = useHistory();
+
   return (
     <div className="content-container">
       <div className="content">
         <Router>
-          <Routes>
-            <Route path={path} element={element} />
-          </Routes>
+          <Switch>
+            <Route exact path="/" component={Homepage} />
+            <Route exact path="/regulars" component={Regulars} />
+          </Switch>
         </Router>
       </div>
       <BottomNavigation
@@ -42,16 +42,13 @@ function App() {
           setValue(newValue);
           switch (value) {
             case 1:
-              setPath('/');
-              setElement(<Homepage />);
+              history.push('/');
               break;
             case 0:
-              setPath('/regulars');
-              setElement(<Regulars />);
+              history.push('/regulars');
               break;
             default:
-              setPath('/');
-              setElement(<Homepage />);
+              history.push('/');
               break;
           }
         }}

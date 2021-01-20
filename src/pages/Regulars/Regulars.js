@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router';
 import './Regulars.scss';
 
 function Regulars() {
@@ -9,4 +10,4 @@ function Regulars() {
     );
 }
 
-export default Regulars;
+export default withRouter(Regulars);
