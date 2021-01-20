@@ -1,17 +1,17 @@
 .home {
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: max-content max-content max-content;
     grid-auto-columns: 100%;
     height: 100%;
 
     .section {
         .section-header {
-            font-size: 12px;
+            font-size: 10px;
             font-family: 'Inter', sans-serif;
+            font-weight: 300;
         }
 
         &:nth-child(2) {
-            align-self: center;
 
             .section-header {
                 padding: 0 15px;
@@ -23,7 +23,6 @@
         }
 
         &:last-child {
-            align-self: end;
             padding: 0 15px;
         }
     }

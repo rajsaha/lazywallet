@@ -1,5 +1,6 @@
 .content-container {
-    height: calc(100vh - 56px);
+    height: calc(100vh + 12rem);
+    max-height: max-content;
 
     .content {
         height: 100%;
