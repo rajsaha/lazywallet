@@ -1,12 +1,12 @@
+@import '../../variables';
+
 .expense-history-container {
     box-sizing: border-box;
     border: 1px solid #f3f3f3;
     border-radius: 5px;
     margin-bottom: 15px;
     position: relative;
-    -webkit-box-shadow: 0 6px 6px -8px #777;
-    -moz-box-shadow: 0 6px 6px -8px #777;
-    box-shadow: 0 6px 6px -8px #777;
+    @extend .boxShadow;
     height: 50px;
     max-height: 50px;
 
@@ -21,7 +21,7 @@
             background-color: rgb(85, 73, 255);
             color: white;
             border-radius: 5px;
-            font-family: 'Inter', sans-serif;
+            @extend .interFont;
             font-weight: 400;
         }
     }
@@ -52,14 +52,14 @@
             font-size: 12px;
             display: grid;
             place-items: center;
-            font-family: 'Inter', sans-serif;
+            @extend .interFont;
             font-weight: 400;
         }
 
         .title {
             margin: 0;
             align-self: center;
-            font-family: 'Inter', sans-serif;
+            @extend .interFont;
             font-weight: 400;
             font-size: 14px;
         }

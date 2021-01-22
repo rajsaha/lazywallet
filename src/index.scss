@@ -1,3 +1,5 @@
+@import "./variables";
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +12,16 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.section {
+  .section-header {
+      font-size: 10px;
+      @extend .interFont;
+      font-weight: 300;
+  }
+}
+
+.padding-horizontal-15 {
+  padding: 0 15px;
 }

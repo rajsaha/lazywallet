@@ -1,5 +1,7 @@
+@import "../../variables";
+
 .spent-on-container {
-    font-family: 'Inter', sans-serif;
+    @extend .interFont;
     box-sizing: border-box;
     padding-top: 15px;
 
