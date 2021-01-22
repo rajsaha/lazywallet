@@ -1,10 +1,9 @@
 import React from "react";
-import DummyData from "@Helper/dummy-data/dummy-data.service";
+import dummyDataObj from "@Helper/dummy-data/dummy-data.service";
 import ExpenseHistory from "@Components/ExpenseHistory/ExpenseHistory";
 import './History.scss';
 
 function History() {
-    const dummyDataObj = new DummyData();
     const latExps = dummyDataObj.getAllExpenses();
 
     return (

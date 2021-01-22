@@ -1,6 +1,7 @@
 import { Button, MenuItem, TextField } from '@material-ui/core';
 import React, { useState } from 'react';
 import './AddExpense.scss';
+import dummyDataObj from "@Helper/dummy-data/dummy-data.service";
 
 function AddExpense() {
     const [type, setType] = useState('');
@@ -9,6 +10,14 @@ function AddExpense() {
     const handleChange = (event) => {
         setType(event.target.value);
     };
+
+    function addNewExpense() {
+        dummyDataObj.addExpense({
+            type: type,
+            title: title,
+            amount: amount
+        });
+    }
 
     return (
         <>
@@ -37,7 +46,7 @@ function AddExpense() {
                     <TextField variant="outlined" placeholder="Amount" size="small" value={amount} onChange={(e) => {setAmount(e.target.value)}} />
                 </div>
                 <div className="add-button">
-                    <Button variant="outlined" color="primary">Add Expense</Button>
+                    <Button variant="outlined" color="primary" onClick={addNewExpense}>Add Expense</Button>
                 </div>
             </form>
         </>

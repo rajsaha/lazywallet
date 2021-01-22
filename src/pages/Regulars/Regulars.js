@@ -1,11 +1,10 @@
 import React from 'react';
 import { withRouter } from 'react-router';
 import './Regulars.scss';
-import DummyData from "@Helper/dummy-data/dummy-data.service";
+import dummyDataObj from "@Helper/dummy-data/dummy-data.service";
 import RegularExpense from '../../components/RegularExpense/RegularExpense';
 
 function Regulars() {
-    const dummyDataObj = new DummyData();
     const regExps = dummyDataObj.getDummyData();
 
     return (

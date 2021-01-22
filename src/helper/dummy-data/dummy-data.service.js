@@ -1,4 +1,4 @@
-export default class DummyData {
+class DummyData {
     regExpenses = [{
             id: 0,
             type: "food",
@@ -93,6 +93,27 @@ export default class DummyData {
 
     addExpense(data) {
         let maxId = Math.max.apply(Math, this.allExpenses.map((o) => o.id)) + 1;
-        
+        this.allExpenses.push({
+            id: maxId,
+            type: data.type,
+            title: data.title,
+            amount: data.amount,
+            datetime: "04-04-2020 2:00 p.m"
+        });
     }
+}
+
+const dummyDataObj = new DummyData();
+export default dummyDataObj;
+
+export function getDummyData() {
+    return dummyDataObj.getDummyData;
+}
+
+export function getAllExpenses() {
+    return dummyDataObj.getAllExpenses;
+}
+
+export function addExpense(data) {
+    return dummyDataObj.addExpense;
 }

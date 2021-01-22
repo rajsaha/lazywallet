@@ -1,10 +1,9 @@
 import React from 'react';
-import DummyData from "@Helper/dummy-data/dummy-data.service";
+import dummyDataObj from "@Helper/dummy-data/dummy-data.service";
 import RegularExpense from "@Components/RegularExpense/RegularExpense";
 import './RegularExpenseGrid.scss';
 
 function RegularExpenseGrid() {
-    const dummyDataObj = new DummyData();
     const regExps = dummyDataObj.getDummyData();
 
     return (
