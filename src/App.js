@@ -7,6 +7,7 @@ import {
 import { Route } from "react-router";
 import Regulars from '@Pages/Regulars/Regulars';
 import PrimaryNav from '@Components/PrimaryNav/PrimaryNav';
+import History from '@Pages/History/History';
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
           </Route>
           <Route exact path="/regulars">
             <Regulars />
+          </Route>
+          <Route exact path="/history">
+            <History />
           </Route>
         </div>
       </div>

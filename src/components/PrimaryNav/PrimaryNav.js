@@ -12,7 +12,7 @@ function PrimaryNav() {
         pathMap: [
             '/',
             '/regulars',
-            '/',
+            '/history',
             '/',
         ]
     };
@@ -48,7 +48,7 @@ function PrimaryNav() {
             >
                 <BottomNavigationAction label="Home" icon={<Home />} component={Link} to={state.pathMap[0]} />
                 <BottomNavigationAction label="Regulars" icon={<AttachMoney />} component={Link} to={state.pathMap[1]} />
-                <BottomNavigationAction label="History" icon={<History />} />
+                <BottomNavigationAction label="History" icon={<History />} component={Link} to={state.pathMap[2]} />
                 <BottomNavigationAction label="Account" icon={<Person />} />
             </BottomNavigation>
         </>
