@@ -23,9 +23,6 @@ function ExpenseHistory({ data }) {
 
     return (
         <div className="expense-history-container">
-            <div className="date-time">
-                <span>{data.datetime}</span>
-            </div>
             <div className="details-grid">
                 <div className="expense-icon">
                     <ExpenseIcon icon={data.type} />
@@ -39,6 +36,9 @@ function ExpenseHistory({ data }) {
                 <IconButton onClick={removeExpense}>
                     <Clear style={{ disabled: isLoading }}/>
                 </IconButton>
+            </div>
+            <div className="date-time">
+                <p>{data.datetime}</p>
             </div>
         </div>
     );

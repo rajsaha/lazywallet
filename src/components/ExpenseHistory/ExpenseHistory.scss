@@ -2,27 +2,24 @@
 
 .expense-history-container {
     box-sizing: border-box;
-    border: 1px solid #f3f3f3;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    position: relative;
+    margin-bottom: 2rem;
     @extend .boxShadow;
+    width: 100%;
     height: 50px;
     max-height: 50px;
 
     .date-time {
-        position: absolute;
-        top: -8px;
-        right: 10px;
         font-size: 10px;
+        width: inherit;
 
-        span {
+        p {
             padding: 3px 10px;
-            background-color: rgb(85, 73, 255);
-            color: white;
-            border-radius: 5px;
+            background-color: #bfd4ff;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
             @extend .interFont;
             font-weight: 400;
+            margin: 0;
         }
     }
 
@@ -31,6 +28,9 @@
         grid-template-columns: 35px 25px 1fr min-content;
         grid-gap: 10px;
         width: 100%;
+        border: 1px solid #f3f3f3;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
 
         .expense-icon {
             display: grid;
