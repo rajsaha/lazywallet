@@ -12,6 +12,9 @@ function AddExpense() {
     };
 
     function addNewExpense() {
+        if (!type && !title && !amount) {
+            return;
+        }
         dummyDataObj.addExpense({
             type: type,
             title: title,
