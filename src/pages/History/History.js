@@ -1,10 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import dummyDataObj from "@Helper/dummy-data/dummy-data.service";
 import ExpenseHistory from "@Components/ExpenseHistory/ExpenseHistory";
 import './History.scss';
 
 function History() {
-    const latExps = dummyDataObj.getAllExpenses();
+    const [latExps, setLatExps] = useState([]);
+    
+    useEffect(() => {
+        getAllExpenses();
+        return (() => {
+            setLatExps([]);
+        });
+    }, [latExps]);
+
+    function removeExpense(id) {
+        dummyDataObj.removeExpense(id);
+        getAllExpenses();
+    }
+
+    function getAllExpenses() {
+        setLatExps([]);
+        setLatExps(dummyDataObj.getAllExpenses());
+    }
 
     return (
         <div className="history">
@@ -13,7 +30,7 @@ function History() {
                 <div className="section-content">
                     <div className="latest-expenses">
                         {latExps.map((value, index) => {
-                            return <ExpenseHistory key={value.id} data={value} />
+                            return <ExpenseHistory key={value.id} data={value} removeExpense={removeExpense} />
                         })}
                     </div>
                 </div>

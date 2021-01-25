@@ -25,3 +25,33 @@ code {
 .padding-horizontal-15 {
   padding: 0 15px;
 }
+
+.anim_fadeIn {
+    animation: fadeIn 0.2s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+.anim_fadeOut {
+  animation: fadeOut 0.2s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

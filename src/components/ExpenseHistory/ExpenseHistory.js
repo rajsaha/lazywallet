@@ -1,25 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import ExpenseIcon from '@Components/ExpenseIcon/ExpenseIcon';
 import Clear from '@material-ui/icons/Clear';
 import './ExpenseHistory.scss';
-import { IconButton } from '@material-ui/core';
+import { Button, IconButton } from '@material-ui/core';
 
-function ExpenseHistory({ data }) {
-    const [isLoading, setIsLoading] = useState(false);
-    useEffect(() => {
-        setIsLoading(true);
-        return (() => {
-            console.log('component unloading');
-        });
-    }, []);
-
-    function removeExpense() {
-        setIsLoading(true);
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 2000);
-        console.log("Removing expense");
-    }
+function ExpenseHistory({ data, removeExpense }) {
+    const [confirm, setConfirm] = useState(false);
 
     return (
         <div className="expense-history-container">
@@ -33,9 +19,25 @@ function ExpenseHistory({ data }) {
                 </div>
 
                 <p className="title">{data.title}</p>
-                <IconButton onClick={removeExpense}>
-                    <Clear style={{ disabled: isLoading }}/>
+                <IconButton onClick={() => setConfirm(true)}>
+                    <Clear />
                 </IconButton>
+
+                {
+                confirm ? 
+                <div className="confirmation-controls-container anim_fadeIn">
+                    <div></div>
+                    <div className="controls">
+                        <Button onClick={() => {
+                            removeExpense(data.id);
+                            setConfirm(false);
+                        }} size="small" variant="outlined" color="primary">Confirm</Button>
+                        <Button onClick={() => setConfirm(false)} size="small" variant="outlined" color="secondary">Cancel</Button>
+                    </div>
+                </div> 
+                : 
+                ""
+                }
             </div>
             <div className="date-time">
                 <p>{data.datetime}</p>

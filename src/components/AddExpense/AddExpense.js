@@ -17,6 +17,9 @@ function AddExpense() {
             title: title,
             amount: amount
         });
+        setType('');
+        setTitle('');
+        setAmount(0);
     }
 
     return (

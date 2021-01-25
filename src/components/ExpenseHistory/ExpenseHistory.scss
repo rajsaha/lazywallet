@@ -10,7 +10,7 @@
 
     .date-time {
         font-size: 10px;
-        width: inherit;
+        width: calc(100% + 2px);
 
         p {
             padding: 3px 10px;
@@ -31,6 +31,7 @@
         border: 1px solid #f3f3f3;
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
+        position: relative;
 
         .expense-icon {
             display: grid;
@@ -62,6 +63,23 @@
             @extend .interFont;
             font-weight: 400;
             font-size: 14px;
+        }
+
+        .confirmation-controls-container {
+            background-color: white;
+            position: absolute;
+            width: calc(100% - 10px);
+            height: 100%;
+            display: inline-grid;
+            grid-template-columns: 1fr 2fr;
+            
+            .controls {
+                display: inline-grid;
+                grid-template-columns: 1fr 1fr;
+                grid-gap: 10px;
+                align-self: center;
+                justify-self: end;
+            }
         }
     }
 }

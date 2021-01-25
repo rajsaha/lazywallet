@@ -101,6 +101,11 @@ class DummyData {
             datetime: "04-04-2020 2:00 p.m"
         });
     }
+
+    removeExpense(id) {
+        const itemIndex = this.allExpenses.map(item => item.id).indexOf(id);
+        this.allExpenses.splice(itemIndex, 1);
+    }
 }
 
 const dummyDataObj = new DummyData();
@@ -116,4 +121,8 @@ export function getAllExpenses() {
 
 export function addExpense(data) {
     return dummyDataObj.addExpense;
+}
+
+export function removeExpense(data) {
+    return dummyDataObj.removeExpense;
 }
