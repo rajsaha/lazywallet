@@ -1,26 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import dummyDataObj from "@Helper/dummy-data/dummy-data.service";
 import ExpenseHistory from "@Components/ExpenseHistory/ExpenseHistory";
 import './History.scss';
 
 function History() {
     const [latExps, setLatExps] = useState([]);
+    const [latExpsLength, setLatExpsLength] = useState(latExps.length);
     
+    const getAllExpenses = useCallback(() => {
+        setLatExps(dummyDataObj.getAllExpenses());
+        setLatExpsLength(latExps.length);
+    }, [latExps]);
+
     useEffect(() => {
         getAllExpenses();
         return (() => {
             setLatExps([]);
         });
-    }, [latExps]);
+    }, [latExps, getAllExpenses]);
 
     function removeExpense(id) {
         dummyDataObj.removeExpense(id);
+        if (latExpsLength > 1) setLatExpsLength(latExpsLength - 1);
         getAllExpenses();
-    }
-
-    function getAllExpenses() {
-        setLatExps([]);
-        setLatExps(dummyDataObj.getAllExpenses());
     }
 
     return (

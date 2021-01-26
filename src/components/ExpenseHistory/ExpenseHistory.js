@@ -31,7 +31,7 @@ function ExpenseHistory({ data, removeExpense }) {
                         <Button onClick={() => {
                             removeExpense(data.id);
                             setConfirm(false);
-                        }} size="small" variant="outlined" color="primary">Confirm</Button>
+                        }} size="small" variant="outlined" color="primary">Delete</Button>
                         <Button onClick={() => setConfirm(false)} size="small" variant="outlined" color="secondary">Cancel</Button>
                     </div>
                 </div> 

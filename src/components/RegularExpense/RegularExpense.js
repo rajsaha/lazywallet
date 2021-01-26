@@ -1,22 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ExpenseIcon from '../ExpenseIcon/ExpenseIcon';
 import Button from '@material-ui/core/Button';
 import './RegularExpense.scss';
 import { Edit, Clear } from "@material-ui/icons";
 import { IconButton } from '@material-ui/core';
+import dummyDataObj from "@Helper/dummy-data/dummy-data.service";
 
 function RegularExpense({ data, isEditable = false }) {
     const [isLoading, setIsLoading] = useState(false);
+    const [confirm, setConfirm] = useState(false);
+
+    useEffect(() => {
+        return (() => { });
+    }, []);
+
     function addExpense() {
         setIsLoading(true);
+        dummyDataObj.addExpense({
+            type: data.type,
+            title: data.title,
+            amount: data.amount
+        });
         setTimeout(() => {
             setIsLoading(false);
         }, 2000);
         console.log("Adding expense");
-    }
-
-    function deleteRegularExpense({ expenseData }) {
-        console.log("Open dialog", expenseData);
     }
 
     return (
@@ -39,10 +47,23 @@ function RegularExpense({ data, isEditable = false }) {
                     <IconButton>
                         <Edit style={{ disabled: isLoading }} />
                     </IconButton>
-                    <IconButton onClick={deleteRegularExpense(data)}>
+                    <IconButton onClick={() => setConfirm(true)}>
                         <Clear style={{ disabled: isLoading }} />
                     </IconButton>
                 </div>
+
+                {
+                    confirm ?
+                        <div className="confirmation-controls-container anim_fadeIn">
+                            <div></div>
+                            <div className="controls">
+                                <Button size="small" variant="outlined" color="primary">Delete</Button>
+                                <Button onClick={() => setConfirm(false)} size="small" variant="outlined" color="secondary">Cancel</Button>
+                            </div>
+                        </div>
+                        :
+                        ""
+                }
             </div>
             :
             // Used in home page

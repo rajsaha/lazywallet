@@ -1,29 +1,27 @@
 import { Button, MenuItem, TextField } from '@material-ui/core';
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import './AddExpense.scss';
-import dummyDataObj from "@Helper/dummy-data/dummy-data.service";
 
-function AddExpense() {
+function AddExpense({ expenseCallback, buttonLabel = 'Add Expense' }) {
     const [type, setType] = useState('');
     const [title, setTitle] = useState('');
     const [amount, setAmount] = useState(0);
+    const [expenseCallbackReturn, setExpenseCallbackReturn] = useState(false);
     const handleChange = (event) => {
         setType(event.target.value);
     };
 
-    function addNewExpense() {
-        if (!type && !title && !amount) {
-            return;
-        }
-        dummyDataObj.addExpense({
-            type: type,
-            title: title,
-            amount: amount
-        });
+    const clearFields = useCallback(() => {
+        if (!expenseCallbackReturn) return;
         setType('');
         setTitle('');
         setAmount(0);
-    }
+    }, [expenseCallbackReturn])
+
+    useEffect(() => {
+        if (expenseCallbackReturn) clearFields();
+        return (() => {})
+    }, [clearFields, expenseCallbackReturn]);
 
     return (
         <>
@@ -52,7 +50,10 @@ function AddExpense() {
                     <TextField variant="outlined" placeholder="Amount" size="small" value={amount} onChange={(e) => {setAmount(e.target.value)}} />
                 </div>
                 <div className="add-button">
-                    <Button variant="outlined" color="primary" onClick={addNewExpense}>Add Expense</Button>
+                    <Button variant="outlined" color="primary" onClick={() => {
+                        setExpenseCallbackReturn(expenseCallback({ type, title, amount }));
+                        clearFields();
+                    }}>{ buttonLabel }</Button>
                 </div>
             </form>
         </>

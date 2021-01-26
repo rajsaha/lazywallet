@@ -65,22 +65,5 @@
             font-weight: 400;
             font-size: 14px;
         }
-
-        .confirmation-controls-container {
-            background-color: white;
-            position: absolute;
-            width: calc(100% - 10px);
-            height: 100%;
-            display: inline-grid;
-            grid-template-columns: 1fr 2fr;
-            
-            .controls {
-                display: inline-grid;
-                grid-template-columns: 1fr 1fr;
-                grid-gap: 10px;
-                align-self: center;
-                justify-self: end;
-            }
-        }
     }
 }

@@ -16,9 +16,9 @@ code {
 
 .section {
   .section-header {
-      font-size: 10px;
-      @extend .interFont;
-      font-weight: 300;
+    font-size: 10px;
+    @extend .interFont;
+    font-weight: 300;
   }
 }
 
@@ -26,9 +26,26 @@ code {
   padding: 0 15px;
 }
 
+.confirmation-controls-container {
+  background-color: white;
+  position: absolute;
+  width: calc(100% - 10px);
+  height: 100%;
+  display: inline-grid;
+  grid-template-columns: 1fr 2fr;
+
+  .controls {
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    align-self: center;
+    justify-self: end;
+  }
+}
+
 .anim_fadeIn {
-    animation: fadeIn 0.2s ease-in-out;
-    animation-fill-mode: forwards;
+  animation: fadeIn 0.2s ease-in-out;
+  animation-fill-mode: forwards;
 }
 
 .anim_fadeOut {
@@ -37,13 +54,13 @@ code {
 }
 
 @keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
+  0% {
+    opacity: 0;
+  }
 
-    100% {
-        opacity: 1;
-    }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeOut {
