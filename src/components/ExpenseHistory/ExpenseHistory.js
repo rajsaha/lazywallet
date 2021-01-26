@@ -11,7 +11,7 @@ function ExpenseHistory({ data, removeExpense }) {
         <div className="expense-history-container">
             <div className="details-grid">
                 <div className="expense-icon">
-                    <ExpenseIcon icon={data.type} />
+                    <ExpenseIcon icon={data.typeDesc} />
                 </div>
 
                 <div className="amount">

@@ -1,7 +1,5 @@
 .inputs {
     display: grid;
-    grid-template-areas: "title title"
-    "type amount";
     grid-template-columns: 1fr 1fr;
     grid-gap: 15px;
     margin-bottom: 15px;
@@ -23,4 +21,15 @@
     button {
         width: 100%;
     }
+}
+
+.inputs-template-areas-show-button {
+    grid-template-areas: "title title"
+        "type amount";
+}
+
+.inputs-template-areas-hide-button {
+    grid-template-areas: "title title"
+        "type type"
+        "amount amount";
 }
