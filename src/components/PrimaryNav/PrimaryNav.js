@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { withRouter } from "react-router";
+import React, { useEffect, useState } from 'react';
+import { useLocation, withRouter } from "react-router";
 import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
@@ -7,15 +7,17 @@ import { Home, History, AttachMoney, Person } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 
 function PrimaryNav() {
+    const location = useLocation();
     const state = {
         value: 0,
         pathMap: [
             '/',
             '/regulars',
             '/history',
-            '/',
+            '/account',
         ]
     };
+
     const useStyles = makeStyles({
         root: {
             width: "100%",
@@ -37,6 +39,13 @@ function PrimaryNav() {
         setState(value);
     };
 
+    useEffect(() => {
+        for (let i = 0; i < state.pathMap.length; i++) {
+            if (state.pathMap[i] === location.pathname) setState(i);
+        }
+
+        return (() => {})
+    }, [location.pathname, state.pathMap]);
 
     return (
         <>
