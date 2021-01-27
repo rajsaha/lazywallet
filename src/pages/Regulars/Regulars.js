@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { withRouter } from 'react-router';
 import './Regulars.scss';
 import dummyDataObj from "@Helper/dummy-data/dummy-data.service";
@@ -6,6 +6,11 @@ import RegularExpense from '../../components/RegularExpense/RegularExpense';
 
 function Regulars() {
     const regExps = dummyDataObj.getDummyData();
+
+    useEffect(() => {
+        window.scrollTo(0,0);
+        return (() => {});
+    }, []);
 
     return (
         <div className="regulars">

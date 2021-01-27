@@ -13,6 +13,7 @@ function History() {
     }, [latExps]);
 
     useEffect(() => {
+        window.scrollTo(0,0);
         getAllExpenses();
         return (() => {
             setLatExps([]);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './Home.scss';
 import AddExpense from "@Components/AddExpense/AddExpense";
 import RegularExpenseGrid from "@Components/RegularExpenseGrid/RegularExpenseGrid";
@@ -20,6 +20,10 @@ function Homepage() {
 
         return true;
     }
+    useEffect(() => {
+        window.scrollTo(0,0);
+        return (() => {});
+    }, []);
     return (
         <div className="home">
             <div className="section padding-horizontal-15">
