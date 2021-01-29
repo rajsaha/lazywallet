@@ -26,23 +26,6 @@ code {
   padding: 0 15px;
 }
 
-.confirmation-controls-container {
-  background-color: white;
-  position: absolute;
-  width: calc(100% - 10px);
-  height: 100%;
-  display: inline-grid;
-  grid-template-columns: 1fr 2fr;
-
-  .controls {
-    display: inline-grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 10px;
-    align-self: center;
-    justify-self: end;
-  }
-}
-
 .anim_fadeIn {
   animation: fadeIn 0.2s ease-in-out;
   animation-fill-mode: forwards;

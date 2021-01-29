@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import ExpenseIcon from '../ExpenseIcon/ExpenseIcon';
 import Button from '@material-ui/core/Button';
 import './RegularExpense.scss';
-import { Edit, Clear } from "@material-ui/icons";
-import { IconButton } from '@material-ui/core';
+import { Edit } from "@material-ui/icons";
+import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
+import { DialogContentText, IconButton } from '@material-ui/core';
 import dummyDataObj from "@Helper/dummy-data/dummy-data.service";
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -13,15 +14,19 @@ import AddExpense from '../AddExpense/AddExpense';
 
 function RegularExpense({ data, isEditable = false }) {
     const [isLoading, setIsLoading] = useState(false);
-    const [showDeleteConfirmationButtons, setShowDeleteConfirmationButtons] = useState(false);
-    const [showDialog, setShowDialog] = useState(false);
+    const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+    const [showUpdateDialog, setShowUpdateDialog] = useState(false);
 
     useEffect(() => {
         return (() => { });
     }, []);
 
-    const handleClose = () => {
-        setShowDialog(false);
+    const handleDeleteDialogClose = () => {
+        setShowDeleteDialog(false);
+    };
+
+    const handleUpdateDialogClose = () => {
+        setShowUpdateDialog(false);
     };
 
     function addExpense() {
@@ -54,39 +59,50 @@ function RegularExpense({ data, isEditable = false }) {
                 </div>
 
                 <div className="controls-grid">
-                    <IconButton onClick={() => setShowDialog(true)}>
+                    <IconButton onClick={() => setShowUpdateDialog(true)}>
                         <Edit style={{ disabled: isLoading }} />
                     </IconButton>
-                    <IconButton onClick={() => setShowDeleteConfirmationButtons(true)}>
-                        <Clear style={{ disabled: isLoading }} />
+                    <IconButton onClick={() => setShowDeleteDialog(true)}>
+                        <DeleteOutlineIcon style={{ disabled: isLoading }} />
                     </IconButton>
                 </div>
 
                 {
-                    showDeleteConfirmationButtons ?
-                        <div className="confirmation-controls-container anim_fadeIn">
-                            <div></div>
-                            <div className="controls">
-                                <Button size="small" variant="outlined" color="primary">Delete</Button>
-                                <Button onClick={() => setShowDeleteConfirmationButtons(false)} size="small" variant="outlined" color="secondary">Cancel</Button>
-                            </div>
-                        </div>
+                    showDeleteDialog ?
+                        <Dialog open={showDeleteDialog} onClose={handleDeleteDialogClose} aria-labelledby="form-dialog-title">
+                            <DialogTitle id="form-dialog-title">Delete Regular Expense</DialogTitle>
+                            <DialogContent>
+                                <DialogContentText>
+                                    Are you sure you want to delete this regular expense?
+                                </DialogContentText>
+                            </DialogContent>
+                            <DialogActions>
+                                <Button onClick={handleDeleteDialogClose} color="primary">
+                                    Cancel
+                                </Button>
+                                <Button onClick={() => {
+                                    handleDeleteDialogClose();
+                                }} color="primary">
+                                    Delete
+                                </Button>
+                            </DialogActions>
+                        </Dialog>
                         :
                         ""
                 }
 
                 {
-                    showDialog ?
-                        <Dialog open={showDialog} onClose={handleClose} aria-labelledby="form-dialog-title">
+                    showUpdateDialog ?
+                        <Dialog open={showUpdateDialog} onClose={handleUpdateDialogClose} aria-labelledby="form-dialog-title">
                             <DialogTitle id="form-dialog-title">Update Expense</DialogTitle>
                             <DialogContent>
                                 <AddExpense buttonLabel="update" showButton={false} _type={data.typeId} _title={data.title} _amount={data.amount} />
                             </DialogContent>
                             <DialogActions>
-                                <Button onClick={handleClose} color="primary">
+                                <Button onClick={handleUpdateDialogClose} color="primary">
                                     Cancel
                                 </Button>
-                                <Button onClick={handleClose} color="primary">
+                                <Button onClick={handleUpdateDialogClose} color="primary">
                                     Update
                                 </Button>
                             </DialogActions>

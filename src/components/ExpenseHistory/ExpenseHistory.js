@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
 import ExpenseIcon from '@Components/ExpenseIcon/ExpenseIcon';
-import Clear from '@material-ui/icons/Clear';
+import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import './ExpenseHistory.scss';
-import { Button, IconButton } from '@material-ui/core';
+import { Button, DialogContentText, IconButton } from '@material-ui/core';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 function ExpenseHistory({ data, removeExpense }) {
-    const [confirm, setConfirm] = useState(false);
+    const [showDialog, setShowDialog] = useState(false);
+
+    const handleClose = () => {
+        setShowDialog(false);
+    };
 
     return (
         <div className="expense-history-container">
@@ -19,24 +27,33 @@ function ExpenseHistory({ data, removeExpense }) {
                 </div>
 
                 <p className="title">{data.title}</p>
-                <IconButton onClick={() => setConfirm(true)}>
-                    <Clear />
+                <IconButton onClick={() => setShowDialog(true)}>
+                    <DeleteOutlineIcon />
                 </IconButton>
 
                 {
-                confirm ? 
-                <div className="confirmation-controls-container anim_fadeIn">
-                    <div></div>
-                    <div className="controls">
-                        <Button onClick={() => {
-                            removeExpense(data.id);
-                            setConfirm(false);
-                        }} size="small" variant="outlined" color="primary">Delete</Button>
-                        <Button onClick={() => setConfirm(false)} size="small" variant="outlined" color="secondary">Cancel</Button>
-                    </div>
-                </div> 
-                : 
-                ""
+                    showDialog ?
+                        <Dialog open={showDialog} onClose={handleClose} aria-labelledby="form-dialog-title">
+                            <DialogTitle id="form-dialog-title">Delete Expense</DialogTitle>
+                            <DialogContent>
+                                <DialogContentText>
+                                    Are you sure you want to delete this expense?
+                                </DialogContentText>
+                            </DialogContent>
+                            <DialogActions>
+                                <Button onClick={handleClose} color="primary">
+                                    Cancel
+                                </Button>
+                                <Button onClick={() => {
+                                    removeExpense(data.id);
+                                    handleClose();
+                                }} color="primary">
+                                    Delete
+                                </Button>
+                            </DialogActions>
+                        </Dialog>
+                        :
+                        ""
                 }
             </div>
             <div className="date-time">
