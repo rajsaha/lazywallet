@@ -10,7 +10,7 @@
 
     display: grid;
     grid-gap: calc(var(--gutter) / 2);
-    grid-template-columns: repeat(6, max-content);
+    grid-template-columns: repeat(1000, max-content);
     grid-template-rows: minmax(auto, 1fr);
 
     overflow-x: scroll;
