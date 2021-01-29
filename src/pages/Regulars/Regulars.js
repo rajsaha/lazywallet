@@ -3,13 +3,14 @@ import { withRouter } from 'react-router';
 import './Regulars.scss';
 import dummyDataObj from "@Helper/dummy-data/dummy-data.service";
 import RegularExpense from '../../components/RegularExpense/RegularExpense';
+import AddRegularExpense from '../../components/AddRegularExpense/AddRegularExpense';
 
 function Regulars() {
     const regExps = dummyDataObj.getDummyData();
 
     useEffect(() => {
-        window.scrollTo(0,0);
-        return (() => {});
+        window.scrollTo(0, 0);
+        return (() => { });
     }, []);
 
     return (
@@ -23,6 +24,10 @@ function Regulars() {
                         })}
                     </div>
                 </div>
+            </div>
+
+            <div className="add-regular-expense section padding-horizontal-15">
+                <AddRegularExpense />
             </div>
         </div>
     );

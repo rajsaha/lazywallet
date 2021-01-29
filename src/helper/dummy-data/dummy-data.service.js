@@ -33,6 +33,27 @@ class DummyData {
             typeId: 7,
             title: "Electricity",
             amount: 25
+        },
+        {
+            id: 5,
+            typeDesc: "utilities",
+            typeId: 7,
+            title: "Water",
+            amount: 20
+        },
+        {
+            id: 6,
+            typeDesc: "utilities",
+            typeId: 7,
+            title: "Internet",
+            amount: 104
+        },
+        {
+            id: 7,
+            typeDesc: "utilities",
+            typeId: 7,
+            title: "Air Cond",
+            amount: 150
         }
     ];
 
@@ -114,6 +135,17 @@ class DummyData {
         });
     }
 
+    addRegularExpense(data) {
+        let maxId = Math.max.apply(Math, this.regExpenses.map((o) => o.id)) + 1;
+        this.regExpenses.push({
+            id: maxId,
+            typeDesc: this.getTypeDesc(data.type),
+            typeId: data.type,
+            title: data.title,
+            amount: data.amount,
+        });
+    }
+
     removeExpense(id) {
         const itemIndex = this.allExpenses.map(item => item.id).indexOf(id);
         this.allExpenses.splice(itemIndex, 1);
@@ -162,6 +194,10 @@ export function getAllExpenses() {
 
 export function addExpense(data) {
     return dummyDataObj.addExpense;
+}
+
+export function addRegularExpense(data) {
+    return dummyDataObj.addRegularExpense;
 }
 
 export function removeExpense(data) {
