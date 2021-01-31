@@ -151,6 +151,11 @@ class DummyData {
         this.allExpenses.splice(itemIndex, 1);
     }
 
+    removeRegularExpense(id) {
+        const itemIndex = this.regExpenses.map(item => item.id).indexOf(id);
+        this.regExpenses.splice(itemIndex, 1);
+    }
+
     getTypeDesc(id) {
         switch (id) {
             case 0:
@@ -202,4 +207,8 @@ export function addRegularExpense(data) {
 
 export function removeExpense(data) {
     return dummyDataObj.removeExpense;
+}
+
+export function removeRegularExpense(data) {
+    return dummyDataObj.removeRegularExpense;
 }

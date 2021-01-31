@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 import './Home.scss';
 import AddExpense from "@Components/AddExpense/AddExpense";
 import RegularExpenseGrid from "@Components/RegularExpenseGrid/RegularExpenseGrid";
 import SpentOn from "@Components/SpentOn/SpentOn";
-import { withRouter } from "react-router";
+import {withRouter} from "react-router";
 import dummyDataObj from "@Helper/dummy-data/dummy-data.service";
 
 function Homepage() {
-    function addNewExpense({ type, title, amount }) {
+    function addNewExpense({type, title, amount}) {
         if (!title || !amount) {
             return false;
         }
@@ -20,15 +20,18 @@ function Homepage() {
 
         return true;
     }
+
     useEffect(() => {
-        window.scrollTo(0,0);
-        return (() => {});
+        window.scrollTo(0, 0);
+        return (() => {
+        });
     }, []);
+
     return (
         <div className="home">
             <div className="section padding-horizontal-15">
                 <div className="section-content">
-                    <SpentOn />
+                    <SpentOn/>
                 </div>
             </div>
 

@@ -21,10 +21,7 @@ function PrimaryNav() {
     const useStyles = makeStyles({
         root: {
             width: "100%",
-            position: "fixed",
-            bottom: 0,
-            left: 0,
-            'z-index': 1000,
+            flex: 0,
             "& .MuiBottomNavigationAction-root": {
                 "@media (max-width: 768px)": {
                     minWidth: "auto",

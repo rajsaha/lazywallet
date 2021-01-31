@@ -12,7 +12,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import AddExpense from '../AddExpense/AddExpense';
 
-function RegularExpense({ data, isEditable = false }) {
+function RegularExpense({ data, isEditable = false, removeRegularExpense, updateRegularExpense }) {
     const [isLoading, setIsLoading] = useState(false);
     const [showDeleteDialog, setShowDeleteDialog] = useState(false);
     const [showUpdateDialog, setShowUpdateDialog] = useState(false);
@@ -81,7 +81,8 @@ function RegularExpense({ data, isEditable = false }) {
                                     Cancel
                                 </Button>
                                 <Button onClick={() => {
-                                    handleDeleteDialogClose();
+                                    const result = removeRegularExpense(data.id);
+                                    if (result) setShowDeleteDialog(false);
                                 }} color="primary">
                                     Delete
                                 </Button>
@@ -95,17 +96,7 @@ function RegularExpense({ data, isEditable = false }) {
                     showUpdateDialog ?
                         <Dialog open={showUpdateDialog} onClose={handleUpdateDialogClose} aria-labelledby="form-dialog-title">
                             <DialogTitle id="form-dialog-title">Update Expense</DialogTitle>
-                            <DialogContent>
-                                <AddExpense buttonLabel="update" showButton={false} _type={data.typeId} _title={data.title} _amount={data.amount} />
-                            </DialogContent>
-                            <DialogActions>
-                                <Button onClick={handleUpdateDialogClose} color="primary">
-                                    Cancel
-                                </Button>
-                                <Button onClick={handleUpdateDialogClose} color="primary">
-                                    Update
-                                </Button>
-                            </DialogActions>
+                            <AddExpense buttonLabel="update" showButton={false} _type={data.typeId} _title={data.title} _amount={data.amount} />
                         </Dialog>
                         :
                         ""

@@ -3,11 +3,6 @@
 }
 
 .regular-expenses {
-    // display: flex;
-    // flex-wrap: nowrap;
-    // overflow-x: auto;
-
-
     display: grid;
     grid-gap: calc(var(--gutter) / 2);
     grid-template-columns: repeat(1000, max-content);

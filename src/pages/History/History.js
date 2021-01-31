@@ -12,6 +12,12 @@ function History() {
         setLatExpsLength(latExps.length);
     }, [latExps]);
 
+    function removeExpense(id) {
+        dummyDataObj.removeExpense(id);
+        if (latExpsLength > 1) setLatExpsLength(latExpsLength - 1);
+        getAllExpenses();
+    }
+
     useEffect(() => {
         window.scrollTo(0,0);
         getAllExpenses();
@@ -19,12 +25,6 @@ function History() {
             setLatExps([]);
         });
     }, [latExps, getAllExpenses]);
-
-    function removeExpense(id) {
-        dummyDataObj.removeExpense(id);
-        if (latExpsLength > 1) setLatExpsLength(latExpsLength - 1);
-        getAllExpenses();
-    }
 
     return (
         <div className="history">

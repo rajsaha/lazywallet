@@ -1,16 +1,25 @@
-.regulars {
+.regulars-container {
+  height: calc(100vh - 56px);
+
+  .regulars {
     padding-top: 15px;
 
-    .section-header {
+    .section {
+      .section-header {
         margin-bottom: 15px;
-    }
+      }
 
-    .add-regular-expense {
-        background-color: white;
-        position: fixed;
-        bottom: 56px;
-        width: 100%;
-        padding: 15px;
-        border-top: 1px solid rgba(0, 0, 0, .2);
+      .section-content {
+        height: calc(100vh - 160px);
+        overflow-y: scroll;
+      }
     }
+  }
+
+  .add-regular-expense {
+    height: 67px;
+    background-color: white;
+    padding: 15px;
+    border-top: 1px solid rgba(0, 0, 0, .2);
+  }
 }
