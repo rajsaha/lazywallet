@@ -1,7 +1,16 @@
-.history {
+.history-container {
+  height: calc(100vh - 56px);
+
+  .history {
     padding-top: 15px;
 
     .section-header {
-        margin-bottom: 15px;
+      margin-bottom: 15px;
     }
+
+    .section-content {
+      height: calc(100vh - 100px);
+      overflow-y: auto;
+    }
+  }
 }

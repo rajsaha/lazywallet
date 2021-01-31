@@ -28,12 +28,14 @@ function AddExpense({
                         dialogCancelCallback,
                         buttonLabel = 'Add Expense',
                         showButton = true,
+                        _id = 0,
                         _type = -1,
                         _title = '',
                         _amount = ''
                     }) {
     const formik = useFormik({
         initialValues: {
+            id: _id,
             type: _type > -1 ? _type : '',
             title: _title ? _title : '',
             amount: _amount ? _amount : '',
@@ -41,6 +43,7 @@ function AddExpense({
         validate,
         onSubmit: values => {
             const result = expenseCallback({
+                id: _id,
                 type: values.type,
                 title: values.title,
                 amount: values.amount
@@ -93,7 +96,7 @@ function AddExpense({
                                 Cancel
                             </Button>
                             <Button type="submit" color="primary">
-                                Add
+                                {buttonLabel}
                             </Button>
                         </DialogActions>
                 }

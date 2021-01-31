@@ -146,6 +146,16 @@ class DummyData {
         });
     }
 
+    updateRegularExpense(data) {
+        this.regExpenses[data.id] = {
+            id: data.id,
+            typeDesc: this.getTypeDesc(data.type),
+            typeId: data.type,
+            title: data.title,
+            amount: data.amount,
+        };
+    }
+
     removeExpense(id) {
         const itemIndex = this.allExpenses.map(item => item.id).indexOf(id);
         this.allExpenses.splice(itemIndex, 1);
@@ -203,6 +213,10 @@ export function addExpense(data) {
 
 export function addRegularExpense(data) {
     return dummyDataObj.addRegularExpense;
+}
+
+export function updateRegularExpense(data) {
+    return dummyDataObj.updateRegularExpense;
 }
 
 export function removeExpense(data) {

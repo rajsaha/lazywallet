@@ -1,16 +1,13 @@
 @import '../../variables';
 
 .expense-history-container {
-    box-sizing: border-box;
     margin-bottom: 2rem;
     @extend .boxShadow;
-    width: 100%;
     height: 50px;
     max-height: 50px;
 
     .date-time {
         font-size: 10px;
-        width: calc(100% + 2px);
 
         p {
             padding: 3px 10px;

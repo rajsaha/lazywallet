@@ -36,6 +36,22 @@ function Regulars() {
         handleClose();
     }
 
+    function updateRegularExpense({id, type, title, amount}) {
+        if (!title || !amount) {
+            return false;
+        }
+        dummyDataObj.updateRegularExpense({
+            id: id,
+            type: type,
+            title: title,
+            amount: amount
+        });
+        setRegExpsLength(regExpsLength + 1);
+        setRegExpsLength(regExpsLength - 1);
+        getRegExps();
+        handleClose();
+    }
+
     function removeRegularExpense(id) {
         dummyDataObj.removeRegularExpense(id);
         if (regExpsLength > 1) setRegExpsLength(regExpsLength - 1);
@@ -59,7 +75,9 @@ function Regulars() {
                         <div className="section-content">
                             <div className="latest-expenses">
                                 {regExps.map((value, index) => {
-                                    return <RegularExpense key={value.id} data={value} isEditable={true} removeRegularExpense={removeRegularExpense}/>
+                                    return <RegularExpense key={value.id} data={value} isEditable={true}
+                                                           removeRegularExpense={removeRegularExpense}
+                                                           updateRegularExpense={updateRegularExpense}/>
                                 })}
                             </div>
                         </div>
@@ -67,7 +85,8 @@ function Regulars() {
                 </div>
 
                 <div className="add-regular-expense section padding-horizontal-15">
-                    <AddRegularExpense addRegularExpenseCallback={addRegularExpense} handleClose={handleClose} handleOpen={handleOpen} showDialog={showDialog}/>
+                    <AddRegularExpense addRegularExpenseCallback={addRegularExpense} handleClose={handleClose}
+                                       handleOpen={handleOpen} showDialog={showDialog}/>
                 </div>
             </div>
         </>
