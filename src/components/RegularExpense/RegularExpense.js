@@ -65,7 +65,7 @@ function RegularExpense({
                 </div>
 
                 <div className="controls-grid">
-                    <IconButton onClick={setShowUpdateDialog}>
+                    <IconButton onClick={() => setShowUpdateDialog(true)}>
                         <Edit style={{disabled: isLoading}}/>
                     </IconButton>
                     <IconButton onClick={() => setShowDeleteDialog(true)}>

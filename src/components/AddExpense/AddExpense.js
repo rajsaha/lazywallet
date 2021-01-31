@@ -52,6 +52,7 @@ function AddExpense({
             // If operation successful, reset form
             if (result) {
                 formik.handleReset({type: -1, title: '', amount: ''});
+                if (!showButton) dialogCancelCallback();
                 return true;
             };
 

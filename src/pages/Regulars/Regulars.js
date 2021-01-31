@@ -33,7 +33,7 @@ function Regulars() {
         });
         setRegExpsLength(regExpsLength + 1);
         getRegExps();
-        handleClose();
+        return true;
     }
 
     function updateRegularExpense({id, type, title, amount}) {
@@ -49,7 +49,7 @@ function Regulars() {
         setRegExpsLength(regExpsLength + 1);
         setRegExpsLength(regExpsLength - 1);
         getRegExps();
-        handleClose();
+        return true;
     }
 
     function removeRegularExpense(id) {
