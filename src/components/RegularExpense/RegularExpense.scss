@@ -22,7 +22,7 @@
     }
 
     p.title {
-        font-size: 12px;
+        font-size: 0.75rem;
         margin: 0 0 10px 0;
         color: rgb(65, 65, 65);
         @extend .interFont;
@@ -33,7 +33,7 @@
         width: 100%;
         align-self: flex-end;
         color: rgb(65, 65, 65);
-        font-size: 10px;
+        font-size: 0.625rem;
     }
 }
 
@@ -60,13 +60,13 @@
             margin-left: 10px;
 
             .MuiSvgIcon-root {
-                font-size: 16px;
+                font-size: 1rem;
                 fill: grey;
             }
         }
 
         .amount {
-            font-size: 12px;
+            font-size: 0.75rem;
             font-weight: bold;
             @extend .interFont;
             align-self: center;
@@ -77,7 +77,7 @@
             align-self: center;
             @extend .interFont;
             font-weight: 400;
-            font-size: 14px;
+            font-size: 0.875rem;
         }
     }
 
@@ -87,7 +87,7 @@
         grid-gap: 5px;
 
         .MuiSvgIcon-root {
-            font-size: 16px;
+            font-size: 1rem;
         }
     }
 }

@@ -71,7 +71,9 @@ function Regulars() {
             <div className="regulars-container">
                 <div className="regulars">
                     <div className="section padding-horizontal-15">
-                        <div className="section-header">Regulars</div>
+                        <div className="section-header">
+                            <h1>Regulars</h1>
+                        </div>
                         <div className="section-content">
                             <div className="latest-expenses">
                                 {regExps.map((value, index) => {

@@ -36,14 +36,18 @@ function Homepage() {
             </div>
 
             <div className="section">
-                <h3 className="section-header padding-horizontal-15">Regular Expenses</h3>
+                <div className="section-header padding-horizontal-15">
+                    <h1>Regular Expenses</h1>
+                </div>
                 <div className="section-content">
                     <RegularExpenseGrid></RegularExpenseGrid>
                 </div>
             </div>
 
             <div className="section padding-horizontal-15">
-                <h3 className="section-header">Add an Expense</h3>
+                <div className="section-header">
+                    <h1>Add an Expense</h1>
+                </div>
                 <div className="section-content">
                     <AddExpense expenseCallback={addNewExpense}/>
                 </div>

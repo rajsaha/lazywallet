@@ -87,7 +87,7 @@ function AddExpense({
                         {(formik.touched.type && formik.errors.type) ?
                             <FormHelperText>Required</FormHelperText> : formik.errors.type}
                     </FormControl>
-                    <TextField error={!!formik.touched.amount && !!formik.errors.amount}
+                    <TextField type="number" error={!!formik.touched.amount && !!formik.errors.amount}
                                helperText={(formik.touched.amount && formik.errors.amount) ? formik.errors.amount : ''}
                                name="amount"
                                variant="outlined" placeholder="Amount"

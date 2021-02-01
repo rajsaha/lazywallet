@@ -5,12 +5,32 @@
     padding-top: 15px;
 
     .section-header {
-      margin-bottom: 15px;
+      .range-controls {
+        display: inline-grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 5px;
+
+        p {
+          font-size: 0.75rem;
+          font-weight: 300;
+          text-align: center;
+          background-color: aliceblue;
+          border-radius: 25px;
+          padding: 5px 15px;
+          align-self: center;
+          transition: background-color 0.2s ease-in-out;
+        }
+      }
     }
 
     .section-content {
-      height: calc(100vh - 100px);
+      height: calc(100vh - 150px);
       overflow-y: auto;
     }
   }
+}
+
+.selected {
+  background-color: #3f51b5 !important;
+  color: white;
 }

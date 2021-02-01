@@ -7,14 +7,13 @@
     max-height: 50px;
 
     .date-time {
-        font-size: 10px;
+        font-size: 0.625rem;
 
         p {
             padding: 3px 10px;
-            background-color: #3f51b5;
+            background-color: aliceblue;
             border-bottom-left-radius: 5px;
             border-bottom-right-radius: 5px;
-            color: white;
             @extend .interFont;
             font-weight: 400;
             margin: 0;
@@ -37,13 +36,13 @@
             margin-left: 10px;
 
             .MuiSvgIcon-root {
-                font-size: 16px;
+                font-size: 1rem;
                 fill: grey;
             }
         }
 
         .amount {
-            font-size: 12px;
+            font-size: 0.75rem;
             font-weight: bold;
             @extend .interFont;
             align-self: center;
@@ -54,12 +53,12 @@
             align-self: center;
             @extend .interFont;
             font-weight: 400;
-            font-size: 14px;
+            font-size: 0.875rem;
         }
 
         button {
             .MuiSvgIcon-root {
-                font-size: 16px;
+                font-size: 1rem;
             }
         }
     }

@@ -26,9 +26,16 @@ code {
   box-sizing: border-box;
 
   .section-header {
-    font-size: 10px;
     @extend .interFont;
-    font-weight: 300;
+
+    h1 {
+      font-size: 0.875rem;
+      font-weight: 300;
+    }
+
+    p {
+      margin: 0 0 15px 0;
+    }
   }
 
   .section-content {
