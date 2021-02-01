@@ -8,7 +8,7 @@
     border-radius: 5px;
     flex: 0 0 auto;
     margin-right: 10px;
-    margin-bottom: 5px;
+    margin-bottom: 0.9375rem;
     @extend .boxShadow;
 
     .expense-icon {
@@ -41,8 +41,7 @@
     box-sizing: border-box;
     border: 1px solid #f3f3f3;
     border-radius: 5px;
-    margin-bottom: 15px;
-    @extend .boxShadow;
+    margin-bottom: 1rem;
     height: 50px;
     max-height: 50px;
     display: flex;
