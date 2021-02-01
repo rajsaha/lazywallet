@@ -4,6 +4,7 @@ import './Regulars.scss';
 import dummyDataObj from "@Helper/dummy-data/dummy-data.service";
 import RegularExpense from '../../components/RegularExpense/RegularExpense';
 import AddRegularExpense from '../../components/AddRegularExpense/AddRegularExpense';
+import EmptyState from "../../components/EmptyState/EmptyState";
 
 function Regulars() {
     const [regExps, setRegExps] = useState([]);
@@ -76,11 +77,11 @@ function Regulars() {
                         </div>
                         <div className="section-content">
                             <div className="latest-expenses">
-                                {regExps.map((value, index) => {
+                                {regExps.length > 0 ? regExps.map((value, index) => {
                                     return <RegularExpense key={value.id} data={value} isEditable={true}
                                                            removeRegularExpense={removeRegularExpense}
                                                            updateRegularExpense={updateRegularExpense}/>
-                                })}
+                                }) : <EmptyState type="regExp" />}
                             </div>
                         </div>
                     </div>

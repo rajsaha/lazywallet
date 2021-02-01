@@ -1,0 +1,27 @@
+.no-data-container {
+  border: 1px solid rgba(0,0,0,.1);
+  border-radius: 5px;
+  padding: 0 15px;
+  margin-bottom: 15px;
+
+  .do-action {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: rgba(0,0,0,.5);
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    grid-gap: 0.5rem;
+
+    .MuiSvgIcon-root {
+      align-self: center;
+      font-size: 1rem;
+      fill: grey;
+    }
+  }
+
+  .no-action {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: rgba(0,0,0,.5);
+  }
+}

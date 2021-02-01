@@ -2,6 +2,7 @@ import React, {useCallback, useEffect, useState} from "react";
 import dummyDataObj from "@Helper/dummy-data/dummy-data.service";
 import ExpenseHistory from "@Components/ExpenseHistory/ExpenseHistory";
 import './History.scss';
+import EmptyState from "../../components/EmptyState/EmptyState";
 
 function History() {
     const [latExps, setLatExps] = useState([]);
@@ -41,9 +42,9 @@ function History() {
                     </div>
                     <div className="section-content">
                         <div className="latest-expenses">
-                            {latExps.map((value, index) => {
+                            {latExps.length > 0 ? latExps.map((value, index) => {
                                 return <ExpenseHistory key={value.id} data={value} removeExpense={removeExpense}/>
-                            })}
+                            }) : <EmptyState type="latExp"/>}
                         </div>
                     </div>
                 </div>
