@@ -65,10 +65,11 @@ function AddExpense({
             <form autoComplete="off" onSubmit={formik.handleSubmit}>
                 <div
                     className={`inputs ${showButton ? 'inputs-template-areas-show-button' : 'inputs-template-areas-hide-button dialog-content'}`}>
-                    <TextField error={!!formik.errors.title} helperText={formik.errors.title ? formik.errors.title : ''}
+                    <TextField error={!!formik.touched.title && !!formik.errors.title}
+                               helperText={(formik.touched.title && formik.errors.title) ? formik.errors.title : ''}
                                type="text" name="title" variant="outlined" placeholder="Title" size="small"
                                {...formik.getFieldProps('title')} />
-                    <FormControl variant="outlined" size="small" error={!!formik.errors.type}>
+                    <FormControl variant="outlined" size="small" error={!!formik.touched.type && !!formik.errors.type}>
                         <InputLabel>Type</InputLabel>
                         <Select name="type" label="Type" {...formik.getFieldProps('type')}>
                             <MenuItem value={0}>Food</MenuItem>
@@ -83,10 +84,12 @@ function AddExpense({
                             <MenuItem value={9}>Debt</MenuItem>
                             <MenuItem value={10}>Other</MenuItem>
                         </Select>
-                        {formik.errors.type ? <FormHelperText>Required</FormHelperText> : formik.errors.type}
+                        {(formik.touched.type && formik.errors.type) ?
+                            <FormHelperText>Required</FormHelperText> : formik.errors.type}
                     </FormControl>
-                    <TextField error={!!formik.errors.amount}
-                               helperText={formik.errors.amount ? formik.errors.amount : ''} name="amount"
+                    <TextField error={!!formik.touched.amount && !!formik.errors.amount}
+                               helperText={(formik.touched.amount && formik.errors.amount) ? formik.errors.amount : ''}
+                               name="amount"
                                variant="outlined" placeholder="Amount"
                                size="small" {...formik.getFieldProps('amount')} />
                 </div>
