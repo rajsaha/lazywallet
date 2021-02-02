@@ -37,14 +37,18 @@ code {
       margin: 0 0 15px 0;
     }
   }
-
-  .section-content {
-    overflow-y: auto;
-  }
 }
 
 .padding-horizontal-15 {
   padding: 0 15px;
+}
+
+.active-icon-fill {
+  fill: #90EE02 !important;
+}
+
+.inactive-icon-fill {
+  fill: grey !important;
 }
 
 .anim_fadeIn {

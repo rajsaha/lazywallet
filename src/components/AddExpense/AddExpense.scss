@@ -1,5 +1,6 @@
+@import '../../variables';
+
 form {
-  margin-top: 2px;
   .inputs {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -16,6 +17,33 @@ form {
 
     div:nth-of-type(3) {
       grid-area: amount;
+    }
+  }
+
+  .repeat-switch-container {
+    padding: 8px 24px;
+    @extend .interFont;
+    background-color: rgba(0, 0, 0, .1);
+    margin: 15px 0;
+    .repeat-switch {
+      display: inline-grid;
+      grid-template-columns: min-content 1fr 1fr;
+      width: 100%;
+  
+      svg.MuiSvgIcon-root {
+        align-self: center;
+        margin-right: 5px;
+      }
+  
+      p {
+        align-self: center;
+        margin: 0;
+      }
+  
+      label {
+        justify-self: end;
+        margin-right: -10px;
+      }
     }
   }
 }

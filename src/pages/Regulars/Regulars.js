@@ -23,21 +23,23 @@ function Regulars() {
         setRegExpsLength(regExps.length);
     }, [regExps]);
 
-    function addRegularExpense({type, title, amount}) {
+    function addRegularExpense({type, title, amount, repeat, time}) {
         if (!title || !amount) {
             return false;
         }
         dummyDataObj.addRegularExpense({
             type: type,
             title: title,
-            amount: amount
+            amount: amount,
+            repeat: repeat,
+            time: time
         });
         setRegExpsLength(regExpsLength + 1);
         getRegExps();
         return true;
     }
 
-    function updateRegularExpense({id, type, title, amount}) {
+    function updateRegularExpense({id, type, title, amount, repeat, time}) {
         if (!title || !amount) {
             return false;
         }
@@ -45,7 +47,9 @@ function Regulars() {
             id: id,
             type: type,
             title: title,
-            amount: amount
+            amount: amount,
+            repeat: repeat,
+            time: time
         });
         setRegExpsLength(regExpsLength + 1);
         setRegExpsLength(regExpsLength - 1);

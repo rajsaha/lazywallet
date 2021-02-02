@@ -4,56 +4,72 @@ class DummyData {
             typeDesc: "food",
             typeId: 0,
             title: "Lunch",
-            amount: 10
+            amount: 10,
+            repeat: false,
+            time: ''
         },
         {
             id: 1,
             typeDesc: "gift",
             typeId: 1,
             title: "Gift",
-            amount: 15
+            amount: 15,
+            repeat: false,
+            time: ''
         },
         {
             id: 2,
             typeDesc: "medical",
             typeId: 2,
             title: "Happy Meds",
-            amount: 150
+            amount: 150,
+            repeat: false,
+            time: ''
         },
         {
             id: 3,
             typeDesc: "pet",
             typeId: 6,
             title: "Chimpanzee",
-            amount: 10
+            amount: 10,
+            repeat: false,
+            time: ''
         },
         {
             id: 4,
             typeDesc: "utilities",
             typeId: 7,
             title: "Electricity",
-            amount: 25
+            amount: 25,
+            repeat: false,
+            time: ''
         },
         {
             id: 5,
             typeDesc: "utilities",
             typeId: 7,
             title: "Water",
-            amount: 20
+            amount: 20,
+            repeat: false,
+            time: ''
         },
         {
             id: 6,
             typeDesc: "utilities",
             typeId: 7,
             title: "Internet",
-            amount: 104
+            amount: 104,
+            repeat: false,
+            time: ''
         },
         {
             id: 7,
             typeDesc: "utilities",
             typeId: 7,
             title: "Air Cond",
-            amount: 150
+            amount: 150,
+            repeat: true,
+            time: '18:30'
         }
     ];
 
@@ -143,6 +159,8 @@ class DummyData {
             typeId: data.type,
             title: data.title,
             amount: data.amount,
+            repeat: data.repeat,
+            time: data.time
         });
     }
 
@@ -153,6 +171,8 @@ class DummyData {
             typeId: data.type,
             title: data.title,
             amount: data.amount,
+            repeat: data.repeat,
+            time: data.time
         };
     }
 

@@ -108,7 +108,9 @@ function RegularExpense({
                                         dialogCancelCallback={handleUpdateDialogClose}
                                         buttonLabel="update" showButton={false} _id={data.id} _type={data.typeId}
                                         _title={data.title}
-                                        _amount={data.amount}/>
+                                        _amount={data.amount}
+                                        _repeat={data.repeat}
+                                        _time={data.time}/>
                         </Dialog>
                         :
                         ""
