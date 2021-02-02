@@ -23,7 +23,8 @@ form {
   .repeat-switch-container {
     padding: 8px 24px;
     @extend .interFont;
-    background-color: rgba(0, 0, 0, .1);
+    -webkit-box-shadow: inset 0px 14px 23px -7px rgba(0,0,0,0.2);
+    box-shadow: inset 0px 14px 23px -7px rgba(0,0,0,0.2);
     margin: 15px 0;
     .repeat-switch {
       display: inline-grid;
@@ -44,6 +45,13 @@ form {
         justify-self: end;
         margin-right: -10px;
       }
+    }
+
+    .days {
+      margin: 10px 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-gap: 5px;
     }
   }
 }

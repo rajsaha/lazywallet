@@ -9,7 +9,7 @@ function AddRegularExpense({addRegularExpenseCallback, handleClose, handleOpen, 
     return (
         <>
             {showDialog ?
-                <Dialog open={showDialog} onClose={handleClose} aria-labelledby="form-dialog-title">
+                <Dialog open={showDialog} onClose={handleClose} scroll="body" aria-labelledby="form-dialog-title">
                     <DialogTitle id="form-dialog-title">Add Regular Expense</DialogTitle>
                     <AddExpense expenseCallback={addRegularExpenseCallback} dialogCancelCallback={handleClose}
                                 showButton={false}/>

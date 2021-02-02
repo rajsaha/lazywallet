@@ -48,7 +48,32 @@ code {
 }
 
 .inactive-icon-fill {
-  fill: grey !important;
+  fill: #6f6f6f !important;
+}
+
+.active-checkbox {
+  background-color: #90EE02;
+}
+
+.inactive-checkbox {
+  background-color: #f1f1f1;
+}
+
+.custom-checkbox {
+  position: relative;
+  padding: 8px 10px;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  text-align: center;
+  text-transform: capitalize;
+  transition: background-color 0.2s ease-in-out;
+  input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+  }
 }
 
 .anim_fadeIn {
