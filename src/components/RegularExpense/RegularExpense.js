@@ -48,30 +48,63 @@ function RegularExpense({
         console.log("Adding expense");
     }
 
+    function getDaysRender(days) {
+        let max = 7;
+        let count = 0;
+        let spans = [];
+        days.forEach((day, index) => {
+            if (day.selected) {
+                spans.push(
+                    <span key={index}>{day.value}</span>
+                )
+                count++;
+            };
+        });
+        // Return if all selected
+        if (count === max) return <span>Everyday</span>
+        
+        // Return if some selected
+        return spans;
+    }
+
     return (
         isEditable ?
             // Used in Regulars page 
             <div className="regular-expense-container-editable">
-                <div className="details-grid">
-                    <div className="expense-icon">
-                        <ExpenseIcon icon={data.typeDesc}/>
+                <div className="top">
+                    <div className="details-grid">
+                        <div className="expense-icon">
+                            <ExpenseIcon icon={data.typeDesc}/>
+                        </div>
+
+                        <div className="amount">
+                            {data.amount}
+                        </div>
+
+                        <p className="title">{data.title}</p>
                     </div>
 
-                    <div className="amount">
-                        {data.amount}
+                    <div className="controls-grid">
+                        <IconButton onClick={() => setShowUpdateDialog(true)}>
+                            <Edit style={{disabled: isLoading}}/>
+                        </IconButton>
+                        <IconButton onClick={() => setShowDeleteDialog(true)}>
+                            <DeleteOutlineIcon style={{disabled: isLoading}}/>
+                        </IconButton>
                     </div>
-
-                    <p className="title">{data.title}</p>
                 </div>
 
-                <div className="controls-grid">
-                    <IconButton onClick={() => setShowUpdateDialog(true)}>
-                        <Edit style={{disabled: isLoading}}/>
-                    </IconButton>
-                    <IconButton onClick={() => setShowDeleteDialog(true)}>
-                        <DeleteOutlineIcon style={{disabled: isLoading}}/>
-                    </IconButton>
-                </div>
+                {
+                    data.repeat && data.days ?
+                    <div className="bottom">
+                        <div className="days">
+                            {getDaysRender(data.days)}
+                        </div>
+                        <div className="time">{data.time}</div>
+                    </div>
+                    :
+                    ''
+                }
 
                 {
                     showDeleteDialog ?

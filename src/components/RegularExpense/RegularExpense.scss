@@ -42,51 +42,78 @@
     border: 1px solid #f3f3f3;
     border-radius: 5px;
     margin-bottom: 1rem;
-    height: 50px;
-    max-height: 50px;
-    display: flex;
     position: relative;
+    @extend .interFont;
 
-    .details-grid {
-        display: inline-grid;
-        grid-template-columns: 35px auto 1fr min-content;
-        grid-gap: 10px;
-        width: 100%;
+    .top {
+        display: flex;
 
-        .expense-icon {
-            display: grid;
-            place-items: center;
-            margin-left: 10px;
+        .details-grid {
+            display: inline-grid;
+            grid-template-columns: 35px auto 1fr min-content;
+            grid-gap: 10px;
+            width: 100%;
 
-            .MuiSvgIcon-root {
-                font-size: 1rem;
-                fill: grey;
+            .expense-icon {
+                display: grid;
+                place-items: center;
+                margin-left: 10px;
+
+                .MuiSvgIcon-root {
+                    font-size: 1rem;
+                    fill: grey;
+                }
+            }
+
+            .amount {
+                font-size: 0.75rem;
+                font-weight: bold;
+                align-self: center;
+            }
+
+            .title {
+                margin: 0;
+                align-self: center;
+                font-weight: 400;
+                font-size: 0.875rem;
             }
         }
 
-        .amount {
-            font-size: 0.75rem;
-            font-weight: bold;
-            @extend .interFont;
-            align-self: center;
-        }
+        .controls-grid {
+            display: inline-grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 5px;
 
-        .title {
-            margin: 0;
-            align-self: center;
-            @extend .interFont;
-            font-weight: 400;
-            font-size: 0.875rem;
+            .MuiSvgIcon-root {
+                font-size: 1rem;
+            }
         }
     }
 
-    .controls-grid {
+    .bottom {
+        border-top: 1px solid rgba(0, 0, 0, .1);
+        font-size: 0.7rem;
+        padding: 5px 15px;
         display: inline-grid;
         grid-template-columns: 1fr 1fr;
-        grid-gap: 5px;
+        width: 100%;
 
-        .MuiSvgIcon-root {
-            font-size: 1rem;
+        .days {
+            span {
+                text-transform: uppercase;
+
+                &:not(:last-child) {
+                    margin-right: 5px;
+                }
+
+                &:not(:last-child)::after {
+                    content: ',';
+                }
+            }
+        }
+
+        .time {
+            justify-self: end;
         }
     }
 }

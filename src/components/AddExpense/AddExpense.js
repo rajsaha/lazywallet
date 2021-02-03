@@ -18,7 +18,7 @@ import {Repeat} from '@material-ui/icons';
 import * as Yup from 'yup';
 
 const daysArray = [
-    {value: 'mon', selected: true},
+    {value: 'mon', selected: false},
     {value: 'tue', selected: false},
     {value: 'wed', selected: false},
     {value: 'thu', selected: false},

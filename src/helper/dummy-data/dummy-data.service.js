@@ -6,7 +6,16 @@ class DummyData {
             title: "Lunch",
             amount: 10,
             repeat: false,
-            time: ''
+            time: '',
+            days: [
+                {value: 'mon', selected: false},
+                {value: 'tue', selected: false},
+                {value: 'wed', selected: false},
+                {value: 'thu', selected: false},
+                {value: 'fri', selected: false},
+                {value: 'sat', selected: false},
+                {value: 'sun', selected: false}
+            ]
         },
         {
             id: 1,
@@ -15,7 +24,16 @@ class DummyData {
             title: "Gift",
             amount: 15,
             repeat: false,
-            time: ''
+            time: '',
+            days: [
+                {value: 'mon', selected: false},
+                {value: 'tue', selected: false},
+                {value: 'wed', selected: false},
+                {value: 'thu', selected: false},
+                {value: 'fri', selected: false},
+                {value: 'sat', selected: false},
+                {value: 'sun', selected: false}
+            ]
         },
         {
             id: 2,
@@ -24,7 +42,16 @@ class DummyData {
             title: "Happy Meds",
             amount: 150,
             repeat: false,
-            time: ''
+            time: '',
+            days: [
+                {value: 'mon', selected: false},
+                {value: 'tue', selected: false},
+                {value: 'wed', selected: false},
+                {value: 'thu', selected: false},
+                {value: 'fri', selected: false},
+                {value: 'sat', selected: false},
+                {value: 'sun', selected: false}
+            ]
         },
         {
             id: 3,
@@ -33,7 +60,16 @@ class DummyData {
             title: "Chimpanzee",
             amount: 10,
             repeat: false,
-            time: ''
+            time: '',
+            days: [
+                {value: 'mon', selected: false},
+                {value: 'tue', selected: false},
+                {value: 'wed', selected: false},
+                {value: 'thu', selected: false},
+                {value: 'fri', selected: false},
+                {value: 'sat', selected: false},
+                {value: 'sun', selected: false}
+            ]
         },
         {
             id: 4,
@@ -42,7 +78,16 @@ class DummyData {
             title: "Electricity",
             amount: 25,
             repeat: false,
-            time: ''
+            time: '',
+            days: [
+                {value: 'mon', selected: false},
+                {value: 'tue', selected: false},
+                {value: 'wed', selected: false},
+                {value: 'thu', selected: false},
+                {value: 'fri', selected: false},
+                {value: 'sat', selected: false},
+                {value: 'sun', selected: false}
+            ]
         },
         {
             id: 5,
@@ -51,7 +96,16 @@ class DummyData {
             title: "Water",
             amount: 20,
             repeat: false,
-            time: ''
+            time: '',
+            days: [
+                {value: 'mon', selected: false},
+                {value: 'tue', selected: false},
+                {value: 'wed', selected: false},
+                {value: 'thu', selected: false},
+                {value: 'fri', selected: false},
+                {value: 'sat', selected: false},
+                {value: 'sun', selected: false}
+            ]
         },
         {
             id: 6,
@@ -60,7 +114,16 @@ class DummyData {
             title: "Internet",
             amount: 104,
             repeat: false,
-            time: ''
+            time: '',
+            days: [
+                {value: 'mon', selected: false},
+                {value: 'tue', selected: false},
+                {value: 'wed', selected: false},
+                {value: 'thu', selected: false},
+                {value: 'fri', selected: false},
+                {value: 'sat', selected: false},
+                {value: 'sun', selected: false}
+            ]
         },
         {
             id: 7,
@@ -69,7 +132,16 @@ class DummyData {
             title: "Air Cond",
             amount: 150,
             repeat: true,
-            time: '18:30'
+            time: '18:30',
+            days: [
+                {value: 'mon', selected: true},
+                {value: 'tue', selected: true},
+                {value: 'wed', selected: false},
+                {value: 'thu', selected: false},
+                {value: 'fri', selected: false},
+                {value: 'sat', selected: false},
+                {value: 'sun', selected: false}
+            ]
         }
     ];
 
