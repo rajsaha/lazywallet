@@ -67,8 +67,21 @@ function AddExpense({
                 days: _days
             }} validationSchema={Yup.object({
                 type: Yup.number().min(0).required('Required'),
-                title: Yup.string().max(15, 'Must be 15 characters or less').required('Required'),
-                amount: Yup.number().required('Required')
+                title: Yup.string().trim().max(15, 'Must be 15 characters or less').required('Required'),
+                amount: Yup.number().required('Required'),
+                repeat: Yup.boolean().required(),
+                days: Yup.array().when('repeat', {
+                    is: true,
+                    then: Yup.array().test('days-check', 'Please select a day', (days) => {
+                        let count = 0;
+                        days.forEach(day => {
+                            if (day.selected) count++;
+                        });
+
+                        if (count === 0) return false;
+                        return true;
+                    })
+                })
             })} onSubmit={(values, {resetForm}) => {
                 const result = expenseCallback({
                     id: _id,
@@ -156,6 +169,9 @@ function AddExpense({
                                                     );
                                                 })
                                             )}/>
+                                        </div>
+                                        <div className="custom-error">
+                                            <span>{typeof formik.errors.days === 'string' ? formik.errors.days : ''}</span>
                                         </div>
                                         <TextField
                                             id="time"

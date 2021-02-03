@@ -77,6 +77,14 @@ code {
   }
 }
 
+.custom-error {
+  font-size: 0.7rem;
+  margin: 10px 0;
+  span {
+    color: rgb(255, 0, 0);
+  }
+}
+
 .anim_fadeIn {
   animation: fadeIn 0.2s ease-in-out;
   animation-fill-mode: forwards;
