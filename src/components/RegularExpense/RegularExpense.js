@@ -102,7 +102,7 @@ function RegularExpense({
                 {
                     showUpdateDialog ?
                         <Dialog open={showUpdateDialog} onClose={handleUpdateDialogClose}
-                                aria-labelledby="form-dialog-title">
+                                aria-labelledby="form-dialog-title" scroll="body">
                             <DialogTitle id="form-dialog-title">Update Expense</DialogTitle>
                             <AddExpense expenseCallback={updateRegularExpense}
                                         dialogCancelCallback={handleUpdateDialogClose}
@@ -110,7 +110,8 @@ function RegularExpense({
                                         _title={data.title}
                                         _amount={data.amount}
                                         _repeat={data.repeat}
-                                        _time={data.time}/>
+                                        _time={data.time}
+                                        _days={data.days}/>
                         </Dialog>
                         :
                         ""

@@ -37,7 +37,8 @@ function AddExpense({
                         _title = '',
                         _amount = '',
                         _repeat = false,
-                        _time = '12:00'
+                        _time = '12:00',
+                        _days = daysArray
                     }) {
 
     const useStyles = makeStyles((theme) => ({
@@ -59,11 +60,11 @@ function AddExpense({
             <Formik initialValues={{
                 id: _id,
                 type: _type,
-                title: _title ? _title : '',
-                amount: _amount ? _amount : '',
+                title: _title,
+                amount: _amount,
                 repeat: _repeat,
-                time: _time ? _time : '',
-                days: daysArray
+                time: _time.length === 0 ? '12:00' : _time,
+                days: _days
             }} validationSchema={Yup.object({
                 type: Yup.number().min(0).required('Required'),
                 title: Yup.string().max(15, 'Must be 15 characters or less').required('Required'),
@@ -75,13 +76,13 @@ function AddExpense({
                     title: values.title,
                     amount: values.amount,
                     repeat: values.repeat,
-                    time: values.time
+                    time: values.time,
+                    days: values.days
                 });
 
                 // If operation successful, reset form
                 if (result) {
-                    console.log(values)
-                    resetForm({type: -1, title: '', amount: ''});
+                    resetForm({type: -1, title: '', amount: '', repeat: false, days: daysArray});
                     if (!showButton) dialogCancelCallback();
                     return true;
                 }

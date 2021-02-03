@@ -160,7 +160,8 @@ class DummyData {
             title: data.title,
             amount: data.amount,
             repeat: data.repeat,
-            time: data.time
+            time: data.time,
+            days: data.days
         });
     }
 
@@ -172,7 +173,8 @@ class DummyData {
             title: data.title,
             amount: data.amount,
             repeat: data.repeat,
-            time: data.time
+            time: data.time,
+            days: data.days
         };
     }
 

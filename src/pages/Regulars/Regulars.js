@@ -23,7 +23,7 @@ function Regulars() {
         setRegExpsLength(regExps.length);
     }, [regExps]);
 
-    function addRegularExpense({type, title, amount, repeat, time}) {
+    function addRegularExpense({type, title, amount, repeat, time, days}) {
         if (!title || !amount) {
             return false;
         }
@@ -32,14 +32,15 @@ function Regulars() {
             title: title,
             amount: amount,
             repeat: repeat,
-            time: time
+            time: time,
+            days: days
         });
         setRegExpsLength(regExpsLength + 1);
         getRegExps();
         return true;
     }
 
-    function updateRegularExpense({id, type, title, amount, repeat, time}) {
+    function updateRegularExpense({id, type, title, amount, repeat, time, days}) {
         if (!title || !amount) {
             return false;
         }
@@ -49,7 +50,8 @@ function Regulars() {
             title: title,
             amount: amount,
             repeat: repeat,
-            time: time
+            time: time,
+            days: days
         });
         setRegExpsLength(regExpsLength + 1);
         setRegExpsLength(regExpsLength - 1);
