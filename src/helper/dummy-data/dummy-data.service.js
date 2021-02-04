@@ -5,10 +5,10 @@ class DummyData {
             typeId: 0,
             title: "Lunch",
             amount: 10,
-            repeat: false,
-            time: '',
+            repeat: true,
+            time: '13:00',
             days: [
-                {value: 'mon', selected: false},
+                {value: 'mon', selected: true},
                 {value: 'tue', selected: false},
                 {value: 'wed', selected: false},
                 {value: 'thu', selected: false},
