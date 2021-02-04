@@ -9,6 +9,7 @@ import Regulars from '@Pages/Regulars/Regulars';
 import PrimaryNav from '@Components/PrimaryNav/PrimaryNav';
 import History from '@Pages/History/History';
 import { createMuiTheme, ThemeProvider, useMediaQuery } from '@material-ui/core';
+import './theme.scss';
 
 function App() {
     const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
@@ -25,7 +26,7 @@ function App() {
     return (
         <ThemeProvider theme={theme}>
             <Router>
-                <div className="app">
+                <div className="app dark">
                     <div className="content-container">
                         <Route exact path="/">
                             <Homepage />

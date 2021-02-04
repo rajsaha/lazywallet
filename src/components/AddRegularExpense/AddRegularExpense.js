@@ -18,7 +18,7 @@ function AddRegularExpense({addRegularExpenseCallback, handleClose, handleOpen, 
                 ""
             }
             <div className="add-button">
-                <Button variant="outlined" color="primary" onClick={handleOpen}>Add Regular
+                <Button variant="contained" disableElevation color="primary" onClick={handleOpen}>Add Regular
                     Expense</Button>
             </div>
         </>

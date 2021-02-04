@@ -1,10 +1,11 @@
 @import '../../variables';
 
 .regular-expense-container {
+    background-color: var(--theme-regular-expense-background-color);
     display: flex;
     flex-direction: column;
     padding: 10px;
-    border: 1px solid #f3f3f3;
+    border: var(--theme-regular-expense-border);
     border-radius: 5px;
     flex: 0 0 auto;
     margin-right: 10px;
@@ -32,7 +33,7 @@
     .expense-icon {
         text-align: center;
         margin-bottom: 5px;
-        color: rgb(63, 63, 63);
+        color: var(--theme-regular-expense-icon-color);
     }
 
     p {
@@ -42,7 +43,7 @@
     p.title {
         font-size: 0.75rem;
         margin: 0 0 10px 0;
-        color: rgb(65, 65, 65);
+        color: var(--theme-regular-expense-title-color);
         @extend .interFont;
         font-weight: 400;
     }
@@ -50,14 +51,14 @@
     button {
         width: 100%;
         align-self: flex-end;
-        color: rgb(65, 65, 65);
+        color: var(--theme-regular-expense-button-color);
         font-size: 0.625rem;
     }
 }
 
 .regular-expense-container-editable {
     box-sizing: border-box;
-    border: 1px solid #f3f3f3;
+    border: var(--theme-regular-expense-border);
     border-radius: 5px;
     margin-bottom: 1rem;
     position: relative;
@@ -65,6 +66,7 @@
 
     .top {
         display: flex;
+        color: var(--theme-regular-expense-color);
 
         .details-grid {
             display: inline-grid;
@@ -79,7 +81,7 @@
 
                 .MuiSvgIcon-root {
                     font-size: 1rem;
-                    fill: grey;
+                    fill: var(--theme-regular-expense-icon-color);
                 }
             }
 
@@ -115,7 +117,10 @@
         display: inline-grid;
         grid-template-columns: 15px 1fr 1fr;
         width: 100%;
-        background-color: aliceblue;
+        background-color: var(--theme-regular-expense-bottom-background-color);
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        color: var(--theme-regular-expense-bottom-color);
 
         .repeat-icon {
             align-self: center;

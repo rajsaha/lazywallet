@@ -1,0 +1,43 @@
+.light {
+    --theme-background-color: #FFF;
+    --theme-text-color: inherit;
+    --theme-regular-expense-border: 1px solid #f3f3f3;
+    --theme-regular-expense-icon-color: rgb(63, 63, 63);
+    --theme-regular-expense-title-color: rgb(65, 65, 65);
+    --theme-regular-expense-button-color: rgb(65, 65, 65);
+    --theme-regular-expense-background-color: #fff;
+    --theme-regular-expense-color: inherit;
+    --theme-regular-expense-bottom-background-color: aliceblue;
+    --theme-regular-expense-bottom-color: inherit;
+    --theme-inactive-checkbox-background-color: #f1f1f1;
+    --theme-inactive-checkbox-color: inherit;
+    --theme-history-range-controls-p: aliceblue;
+    --theme-latest-expense-date-time-background-color: aliceblue;
+    --theme-latest-expense-date-time-color: inherit;
+    --theme-latest-expense-border: 1px solid #f3f3f3;
+    --theme-latest-expense-background-color: inherit;
+    --theme-latest-expense-color: inherit;
+    --theme-latest-expense-icon-color: grey;
+}
+
+.dark {
+    --theme-background-color: #424242;
+    --theme-text-color: #fff;
+    --theme-regular-expense-border: 1px solid rgb(88, 88, 88);
+    --theme-regular-expense-icon-color: #fff;
+    --theme-regular-expense-title-color: #fff;
+    --theme-regular-expense-button-color: #fff;
+    --theme-regular-expense-background-color: #505050;
+    --theme-regular-expense-color: #fff;
+    --theme-regular-expense-bottom-background-color: dimgrey;
+    --theme-regular-expense-bottom-color: #fff;
+    --theme-inactive-checkbox-background-color: dimgrey;
+    --theme-inactive-checkbox-color: #fff;
+    --theme-history-range-controls-p: dimgrey;
+    --theme-latest-expense-date-time-background-color: #505050;
+    --theme-latest-expense-date-time-color: white;
+    --theme-latest-expense-border: 1px solid rgb(88, 88, 88);
+    --theme-latest-expense-background-color: dimgrey;
+    --theme-latest-expense-color: white;
+    --theme-latest-expense-icon-color: white;
+}

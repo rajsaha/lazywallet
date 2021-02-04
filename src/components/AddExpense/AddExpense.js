@@ -194,7 +194,7 @@ function AddExpense({
                         {
                             showButton ?
                                 <div className="add-button">
-                                    <Button type="submit" variant="outlined" color="primary">{buttonLabel}</Button>
+                                    <Button type="submit" variant="contained" disableElevation color="primary">{buttonLabel}</Button>
                                 </div>
                                 :
                                 <DialogActions>

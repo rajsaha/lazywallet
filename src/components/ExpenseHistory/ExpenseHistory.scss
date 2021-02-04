@@ -11,7 +11,8 @@
 
         p {
             padding: 3px 10px;
-            background-color: aliceblue;
+            background-color: var(--theme-latest-expense-date-time-background-color);
+            color: var(--theme-latest-expense-date-time-color);
             border-bottom-left-radius: 5px;
             border-bottom-right-radius: 5px;
             @extend .interFont;
@@ -21,11 +22,13 @@
     }
 
     .details-grid {
+        background-color: var(--theme-latest-expense-background-color);
+        color: var(--theme-latest-expense-color);
         display: inline-grid;
         grid-template-columns: 35px 25px 1fr min-content;
         grid-gap: 10px;
         width: 100%;
-        border: 1px solid #f3f3f3;
+        border: var(--theme-latest-expense-border);
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
         position: relative;
@@ -37,7 +40,7 @@
 
             .MuiSvgIcon-root {
                 font-size: 1rem;
-                fill: grey;
+                fill: var(--theme-latest-expense-icon-color);
             }
         }
 
