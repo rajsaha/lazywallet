@@ -14,11 +14,18 @@
 
     .repeat-icon {
         position: absolute;
-        top: 5px;
-        left: 10px;
+        top: 0;
+        left: 0;
+        width: 25px;
+        height: 25px;
+        background-color: #90EE02;
+        display: grid;
+        place-content: center;
+        border-top-left-radius: 5px;
+        border-bottom-right-radius: 5px;
         .MuiSvgIcon-root {
             font-size: 0.8rem;
-            fill: #90EE02;
+            fill: #fff;
         }
     }
 
