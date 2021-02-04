@@ -57,6 +57,7 @@
 }
 
 .regular-expense-container-editable {
+    background-color: var(--theme-regular-expense-background-color);
     box-sizing: border-box;
     border: var(--theme-regular-expense-border);
     border-radius: 5px;
