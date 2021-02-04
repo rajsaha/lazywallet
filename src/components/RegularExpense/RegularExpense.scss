@@ -10,6 +10,17 @@
     margin-right: 10px;
     margin-bottom: 0.9375rem;
     @extend .boxShadow;
+    position: relative;
+
+    .repeat-icon {
+        position: absolute;
+        top: 5px;
+        left: 10px;
+        .MuiSvgIcon-root {
+            font-size: 0.8rem;
+            fill: #90EE02;
+        }
+    }
 
     .expense-icon {
         text-align: center;

@@ -24,6 +24,7 @@ function RegularExpense({
 
     useEffect(() => {
         return (() => {
+            setIsLoading(false);
         });
     }, []);
 
@@ -163,6 +164,14 @@ function RegularExpense({
             :
             // Used in home page
             <div className="regular-expense-container">
+                {
+                    data.repeat ?
+                    <div className="repeat-icon">
+                        <Repeat />
+                    </div>
+                    :
+                    ''
+                }
                 <div className="expense-icon">
                     <ExpenseIcon icon={data.typeDesc}/>
                 </div>
