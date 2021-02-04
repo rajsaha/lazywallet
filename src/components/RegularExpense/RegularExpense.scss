@@ -95,8 +95,17 @@
         font-size: 0.7rem;
         padding: 5px 15px;
         display: inline-grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 15px 1fr 1fr;
         width: 100%;
+        background-color: aliceblue;
+
+        .repeat-icon {
+            align-self: center;
+            .MuiSvgIcon-root {
+                margin-top: 1px;
+                font-size: 0.7rem;
+            }
+        }
 
         .days {
             span {

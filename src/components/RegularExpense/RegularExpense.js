@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import ExpenseIcon from '../ExpenseIcon/ExpenseIcon';
 import Button from '@material-ui/core/Button';
 import './RegularExpense.scss';
-import {Edit} from "@material-ui/icons";
+import {Edit, Repeat} from "@material-ui/icons";
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import {DialogContentText, IconButton} from '@material-ui/core';
 import dummyDataObj from "@Helper/dummy-data/dummy-data.service";
@@ -67,6 +67,13 @@ function RegularExpense({
         return spans;
     }
 
+    function convertTimeTo12(time) {
+        let [hours, minutes] = time.split(":");
+        let amOrPm = hours >= 12 ? 'pm' : 'am';
+        hours = (hours % 12) || 12;
+        return `${hours}:${minutes} ${amOrPm}`;
+    }
+
     return (
         isEditable ?
             // Used in Regulars page 
@@ -97,10 +104,13 @@ function RegularExpense({
                 {
                     data.repeat && data.days ?
                     <div className="bottom">
+                        <div className="repeat-icon">
+                            <Repeat />
+                        </div>
                         <div className="days">
                             {getDaysRender(data.days)}
                         </div>
-                        <div className="time">{data.time}</div>
+                        <div className="time">{convertTimeTo12(data.time)}</div>
                     </div>
                     :
                     ''
