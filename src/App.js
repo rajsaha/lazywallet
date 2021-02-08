@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import './App.scss';
 import Homepage from '@Pages/Home/Home';
 import {
@@ -13,11 +13,11 @@ import './theme.scss';
 
 function App() {
     const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-    const theme = React.useMemo(
+    const theme = useMemo(
         () =>
             createMuiTheme({
                 palette: {
-                    type: prefersDarkMode ? 'dark' : 'light',
+                    type: prefersDarkMode ? 'light' : 'dark',
                 },
             }),
         [prefersDarkMode],
