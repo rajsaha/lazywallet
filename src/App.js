@@ -16,11 +16,10 @@ import ThemeContext from "@Context/ThemeContext";
 function App() {
     const [appTheme, setAppTheme] = useState('light');
     const setTheme = (e) => {
-        console.log('Parent', e);
-        setAppTheme(e);
+        setAppTheme(e)
     };
 
-    const prefersDarkMode = useMediaQuery(`(prefers-color-scheme: 'light')`);
+    const prefersDarkMode = useMediaQuery(`(prefers-color-scheme: ${appTheme})`);
     const theme = useMemo(
         () =>
             createMuiTheme({
@@ -50,7 +49,7 @@ function App() {
                                 <History />
                             </Route>
                             <Route exact path="/account">
-                                <Account />
+                                <Account currentTheme={appTheme}/>
                             </Route>
                         </div>
                         <PrimaryNav />

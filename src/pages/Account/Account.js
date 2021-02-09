@@ -2,15 +2,15 @@ import React from 'react';
 import './Account.scss';
 import ThemeChanger from "@Components/ThemeChanger/ThemeChanger";
 
-function Account() {
+function Account({currentTheme}) {
     return (
         <>
             <div className="account-container">
                 <div className="section padding-horizontal-15">
                     <div className="section-header">
-                        <h1>Theme</h1>
+                        <h1>Toggle Theme</h1>
                     </div>
-                    <ThemeChanger />
+                    <ThemeChanger currentTheme={currentTheme} />
                 </div>
             </div>
         </>
