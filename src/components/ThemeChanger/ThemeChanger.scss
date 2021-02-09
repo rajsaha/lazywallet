@@ -1,0 +1,11 @@
+@import '../../_variables.scss';
+
+.theme-changer-form {
+  display: grid;
+  grid-template-columns: 1fr 35px;
+
+  p {
+    align-self: center;
+    margin: 0;
+  }
+}
