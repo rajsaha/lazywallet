@@ -8,5 +8,6 @@
     align-self: center;
     margin: 0;
     color: var(--theme-text-color);
+    @extend .interFont;
   }
 }

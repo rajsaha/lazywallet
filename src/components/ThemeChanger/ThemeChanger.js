@@ -18,7 +18,7 @@ function ThemeChanger({currentTheme}) {
                                 checked={formik.values.isDark} {...formik.getFieldProps('isDark')}
                                 name="isDark" color="primary" onChangeCapture={e => {
                                     setTheme(e.target.checked ? 'dark' : 'light');
-                            }} />} label="Theme"/>
+                            }} />} label=""/>
                     </form>
                 )}
             </Formik>
