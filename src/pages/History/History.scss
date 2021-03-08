@@ -6,9 +6,8 @@
 
     .section-header {
       .range-controls {
-        display: inline-grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-gap: 5px;
+        display: inline-flex;
+        gap: 5px;
 
         p {
           font-size: 0.75rem;
