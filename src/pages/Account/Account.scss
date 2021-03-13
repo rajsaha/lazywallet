@@ -3,4 +3,16 @@
 .account-container {
   padding-top: 15px;
   height: calc(100vh - 56px);
+
+  .section:nth-child(1) {
+    margin-bottom: 15px;
+  }
+
+  .section {
+    .logout {
+      Button {
+        width: 100%;
+      }
+    }
+  }
 }

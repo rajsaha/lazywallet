@@ -3,6 +3,7 @@ import dummyDataObj from "@Helper/dummy-data/dummy-data.service";
 import ExpenseHistory from "@Components/ExpenseHistory/ExpenseHistory";
 import './History.scss';
 import EmptyState from "../../components/EmptyState/EmptyState";
+import {withRouter} from "react-router";
 
 function History() {
     const [latExps, setLatExps] = useState([]);
@@ -53,4 +54,4 @@ function History() {
     );
 }
 
-export default History;
+export default withRouter(History);
