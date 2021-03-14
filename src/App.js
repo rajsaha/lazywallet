@@ -28,6 +28,8 @@ function App() {
     const [appTheme, setAppTheme] = useState('light');
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [open, setOpen] = useState(false);
+    const [alertMessage, setAlertMessage] = useState('Username/Password incorrect');
+    const [alertSeverity, setAlertSeverity] = useState('error');
 
     const showError = () => {
         setOpen(true);
@@ -65,6 +67,8 @@ function App() {
         });
 
         if ('error' in _result_login.data) {
+            setAlertMessage('Username/password incorrect');
+            setAlertSeverity('error');
             showError();
             return;
         }
@@ -72,6 +76,27 @@ function App() {
         setIsAuthenticated(true);
         localStorage.setItem('token', _result_login.data.token);
         history.push('/');
+    }
+
+    async function signup({email, username, password}) {
+        if (!email || !username || !password) return;
+
+        const _result_signup = await axios.post(`http://localhost:8080/signup`, {
+            email,
+            username,
+            password
+        });
+
+        if ('error' in _result_signup.data) {
+            setAlertMessage('Something went wrong');
+            setAlertSeverity('error');
+            showError();
+            return;
+        }
+
+        setAlertMessage('Sign up successful');
+        setAlertSeverity('success');
+        history.push('/login');
     }
 
     useEffect(() => {
@@ -93,13 +118,13 @@ function App() {
                         <ProtectedRoute path="/account"
                                         component={() => <Account currentTheme={appTheme}/>}/>
                         <Route path="/login" component={() => <Login loginCallback={login}/>}></Route>
-                        <Route path="/signup" component={Signup}></Route>
+                        <Route path="/signup" component={() => <Signup signupCallback={signup} />}></Route>
                     </div>
                     {isAuthenticated ? <PrimaryNav/> : ''}
 
                     <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
-                        <Alert onClose={handleClose} severity="error">
-                            Username/Password incorrect
+                        <Alert onClose={handleClose} severity={alertSeverity}>
+                            {alertMessage}
                         </Alert>
                     </Snackbar>
                 </div>

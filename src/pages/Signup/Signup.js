@@ -6,7 +6,7 @@ import {Formik} from "formik";
 import {withRouter} from "react-router";
 import {Link} from "react-router-dom";
 
-function Signup() {
+function Signup({ signupCallback }) {
     return (
         <>
             <Formik
@@ -24,7 +24,7 @@ function Signup() {
                 }
                 onSubmit={
                     (values, {resetForm}) => {
-                        console.log(values);
+                        signupCallback({ email: values.email, username: values.username, password: values.password });
                     }
                 }
             >
