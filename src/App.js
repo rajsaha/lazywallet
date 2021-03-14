@@ -20,16 +20,16 @@ import PrimaryNav from '@Components/PrimaryNav/PrimaryNav';
 import ProtectedRoute from '@Components/ProtectedRoute/ProtectedRoute';
 
 // Context
-import ThemeContext from "@Context/ThemeContext";
+import AppContext from "@Context/AppContext";
 import Alert from "./components/Alert/Alert";
 
 function App() {
     const history = useHistory();
     const [appTheme, setAppTheme] = useState('light');
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [open, setOpen] = useState(false);
     const [alertMessage, setAlertMessage] = useState('Username/Password incorrect');
     const [alertSeverity, setAlertSeverity] = useState('error');
+    const [token, setToken] = useState('');
 
     const showError = () => {
         setOpen(true);
@@ -73,9 +73,18 @@ function App() {
             return;
         }
 
-        setIsAuthenticated(true);
         localStorage.setItem('token', _result_login.data.token);
+        localStorage.setItem('userId', _result_login.data.userId);
+        setToken(_result_login.data.token);
         history.push('/');
+    }
+
+    function logout() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('userId');
+        setToken('');
+        setTheme('light');
+        history.push('/login');
     }
 
     async function signup({email, username, password}) {
@@ -100,12 +109,20 @@ function App() {
     }
 
     useEffect(() => {
-        const token = localStorage.getItem('token');
-        if (token) setIsAuthenticated(true);
-    }, [isAuthenticated]);
+        setToken(localStorage.getItem('token'));
+        axios.interceptors.request.use(
+            config => {
+                if (token) {
+                    config.headers['Authorization'] = 'Bearer ' + token;
+                }
+
+                return config;
+            }
+        )
+    }, [token]);
 
     return (
-        <ThemeContext.Provider value={{
+        <AppContext.Provider value={{
             appTheme,
             setTheme,
         }}>
@@ -116,11 +133,11 @@ function App() {
                         <ProtectedRoute path="/history" component={History}/>
                         <ProtectedRoute path="/regulars" component={Regulars}/>
                         <ProtectedRoute path="/account"
-                                        component={() => <Account currentTheme={appTheme}/>}/>
+                                        component={() => <Account currentTheme={appTheme} logoutCallback={logout}/>}/>
                         <Route path="/login" component={() => <Login loginCallback={login}/>}></Route>
                         <Route path="/signup" component={() => <Signup signupCallback={signup} />}></Route>
                     </div>
-                    {isAuthenticated ? <PrimaryNav/> : ''}
+                    {token ? <PrimaryNav/> : ''}
 
                     <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
                         <Alert onClose={handleClose} severity={alertSeverity}>
@@ -129,7 +146,7 @@ function App() {
                     </Snackbar>
                 </div>
             </ThemeProvider>
-        </ThemeContext.Provider>
+        </AppContext.Provider>
     );
 }
 

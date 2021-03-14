@@ -2,10 +2,10 @@ import React, {useContext} from 'react';
 import './ThemeChanger.scss';
 import { Formik } from 'formik';
 import {FormControlLabel, Switch} from "@material-ui/core";
-import ThemeContext from "../../context/ThemeContext";
+import AppContext from "../../context/AppContext";
 
 function ThemeChanger({currentTheme}) {
-    const {setTheme} = useContext(ThemeContext);
+    const {setTheme} = useContext(AppContext);
 
     return (
         <>

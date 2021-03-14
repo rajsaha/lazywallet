@@ -1,11 +1,19 @@
-import React from 'react';
-import dummyDataObj from "@Helper/dummy-data/dummy-data.service";
+import React, {useEffect, useState} from 'react';
 import RegularExpense from "@Components/RegularExpense/RegularExpense";
 import './RegularExpenseGrid.scss';
 import EmptyState from "@Components/EmptyState/EmptyState";
+import RegularExpenseService from "@Helper/RegularExpenseService/RegularExpenseService";
 
 function RegularExpenseGrid() {
-    const regExps = dummyDataObj.getDummyData();
+    const [regExps, setRegExps] = useState([]);
+    const userId = localStorage.getItem('userId');
+
+    useEffect(() => {
+        RegularExpenseService.getRegularExpenses({userId}).then(res => {
+            console.log(res);
+            setRegExps(res.data.data.getRegularExpenses[0].regExpenses);
+        });
+    }, [userId]);
 
     return (
         <>

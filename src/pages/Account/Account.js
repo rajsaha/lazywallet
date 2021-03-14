@@ -1,18 +1,10 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import './Account.scss';
 import ThemeChanger from "@Components/ThemeChanger/ThemeChanger";
-import {useHistory, withRouter} from "react-router";
+import {withRouter} from "react-router";
 import Button from "@material-ui/core/Button";
-import ThemeContext from "../../context/ThemeContext";
 
-function Account({currentTheme}) {
-    const history = useHistory();
-    const {setTheme} = useContext(ThemeContext);
-    function logout() {
-        localStorage.setItem('token', '');
-        setTheme('light');
-        history.push('/login');
-    }
+function Account({currentTheme, logoutCallback}) {
     return (
         <>
             <div className="account-container">
@@ -25,7 +17,7 @@ function Account({currentTheme}) {
 
                 <div className="section padding-horizontal-15">
                     <div className="logout">
-                        <Button onClick={logout} variant="outlined">Logout</Button>
+                        <Button onClick={logoutCallback} variant="outlined">Logout</Button>
                     </div>
                 </div>
             </div>

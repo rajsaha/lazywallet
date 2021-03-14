@@ -1,12 +1,18 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import './Home.scss';
 import AddExpense from "@Components/AddExpense/AddExpense";
 import RegularExpenseGrid from "@Components/RegularExpenseGrid/RegularExpenseGrid";
 import SpentOn from "@Components/SpentOn/SpentOn";
 import {withRouter} from "react-router";
 import dummyDataObj from "@Helper/dummy-data/dummy-data.service";
+import HomeService from "@Helper/HomeService/HomeService";
 
 function Homepage() {
+    const [spentData, setSpentData] = useState({
+        spentMostOn: 'n/a',
+        spentThisMonth: 0,
+        spentToday: 0
+    });
     function addNewExpense({type, title, amount}) {
         if (!title || !amount) {
             return false;
@@ -23,6 +29,9 @@ function Homepage() {
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        const userId = localStorage.getItem('userId');
+        HomeService.getHomeData({ userId }).then(res => setSpentData(res.data.data.getHomeData));
+
         return (() => {
         });
     }, []);
@@ -31,7 +40,7 @@ function Homepage() {
         <div className="home">
             <div className="section padding-horizontal-15">
                 <div className="section-content">
-                    <SpentOn/>
+                    <SpentOn {...spentData}/>
                 </div>
             </div>
 

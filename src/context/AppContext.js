@@ -1,8 +1,8 @@
 import {createContext} from 'react';
 
-const ThemeContext = createContext({
+const AppContext = createContext({
     appTheme: 'light',
     setTheme: () => {},
 });
 
-export default ThemeContext;
+export default AppContext;
