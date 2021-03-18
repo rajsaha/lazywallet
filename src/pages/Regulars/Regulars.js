@@ -2,14 +2,17 @@ import React, {useCallback, useEffect, useState} from 'react';
 import {withRouter} from 'react-router';
 import './Regulars.scss';
 import dummyDataObj from "@Helper/dummy-data/dummy-data.service";
-import RegularExpense from '../../components/RegularExpense/RegularExpense';
-import AddRegularExpense from '../../components/AddRegularExpense/AddRegularExpense';
-import EmptyState from "../../components/EmptyState/EmptyState";
+import RegularExpense from '@Components/RegularExpense/RegularExpense';
+import AddRegularExpense from '@Components/AddRegularExpense/AddRegularExpense';
+import EmptyState from "@Components/EmptyState/EmptyState";
+import RegularExpenseService from "@Helper/RegularExpenseService/RegularExpenseService";
 
 function Regulars() {
     const [regExps, setRegExps] = useState([]);
-    const [regExpsLength, setRegExpsLength] = useState(regExps.length);
+    const [regExpsLength, setRegExpsLength] = useState(0);
     const [showDialog, setShowDialog] = useState(false);
+    const [userId, setUserId] = useState('');
+
     const handleClose = () => {
         setShowDialog(false);
     };
@@ -19,9 +22,10 @@ function Regulars() {
     };
 
     const getRegExps = useCallback(() => {
-        setRegExps(dummyDataObj.getDummyData());
-        setRegExpsLength(regExps.length);
-    }, [regExps]);
+        RegularExpenseService.getRegularExpenses({ userId }).then(res => {
+            if (Array.isArray(res.data.data.getRegularExpenses)) setRegExps(res.data.data.getRegularExpenses[0].regExpenses);
+        });
+    }, [userId]);
 
     function addRegularExpense({type, title, amount, repeat, time, days}) {
         if (!title || !amount) {
@@ -68,10 +72,9 @@ function Regulars() {
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        setUserId(localStorage.getItem('userId'));
         getRegExps();
-        return (() => {
-        });
-    }, [regExps, getRegExps]);
+    }, [getRegExps]);
 
     return (
         <>
