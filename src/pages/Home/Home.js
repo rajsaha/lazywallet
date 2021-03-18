@@ -16,6 +16,7 @@ function Homepage() {
   const [expenseTypes, setExpenseTypes] = useState([]);
 
   async function addNewExpense({ typeId, title, amount }) {
+      console.log({typeId, title, amount})
     if (!typeId || !title || !amount) {
       return false;
     }
@@ -27,7 +28,9 @@ function Homepage() {
       amount,
     });
 
-    if (!_result.error) return false;
+    console.log(_result);
+
+    // if ('error' in _result) return false;
     return true;
   }
 

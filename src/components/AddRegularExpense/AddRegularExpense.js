@@ -10,6 +10,7 @@ function AddRegularExpense({
   handleClose,
   handleOpen,
   showDialog = false,
+  expenseTypes = []
 }) {
   return (
     <>
@@ -25,6 +26,7 @@ function AddRegularExpense({
             expenseCallback={addRegularExpenseCallback}
             dialogCancelCallback={handleClose}
             showButton={false}
+            expenseTypes={expenseTypes}
           />
         </Dialog>
       ) : (

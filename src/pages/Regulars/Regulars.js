@@ -5,6 +5,7 @@ import dummyDataObj from "@Helper/dummy-data/dummy-data.service";
 import RegularExpense from "@Components/RegularExpense/RegularExpense";
 import AddRegularExpense from "@Components/AddRegularExpense/AddRegularExpense";
 import EmptyState from "@Components/EmptyState/EmptyState";
+import HomeService from "@Helper/HomeService/HomeService";
 import RegularExpenseService from "@Helper/RegularExpenseService/RegularExpenseService";
 
 function Regulars() {
@@ -12,6 +13,7 @@ function Regulars() {
   const [regExpsLength, setRegExpsLength] = useState(0);
   const [showDialog, setShowDialog] = useState(false);
   const [userId, setUserId] = useState("");
+  const [expenseTypes, setExpenseTypes] = useState([]);
 
   const handleClose = () => {
     setShowDialog(false);
@@ -79,11 +81,18 @@ function Regulars() {
     return true;
   }
 
+  const getExpenseTypes = useCallback(() => {
+    HomeService.getExpenseTypes().then((res) =>
+      setExpenseTypes(res.data.data.getExpenseTypes)
+    );
+  }, []);
+
   useEffect(() => {
     window.scrollTo(0, 0);
     setUserId(localStorage.getItem("userId"));
     getRegExps();
-  }, [getRegExps]);
+    getExpenseTypes();
+  }, [getRegExps, getExpenseTypes]);
 
   return (
     <>
@@ -121,6 +130,7 @@ function Regulars() {
             handleClose={handleClose}
             handleOpen={handleOpen}
             showDialog={showDialog}
+            expenseTypes={expenseTypes}
           />
         </div>
       </div>

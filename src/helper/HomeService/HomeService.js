@@ -52,6 +52,7 @@ const HomeService = (() => {
           query: `
               query {
                   getExpenseTypes {
+                      _id
                       typeId
                       typeDesc
                   }

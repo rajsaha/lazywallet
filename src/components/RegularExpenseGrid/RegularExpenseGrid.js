@@ -10,7 +10,6 @@ function RegularExpenseGrid() {
 
   useEffect(() => {
     RegularExpenseService.getRegularExpenses({ userId }).then((res) => {
-      console.log(res);
       setRegExps(res.data.data.getRegularExpenses[0].regExpenses);
     });
   }, [userId]);

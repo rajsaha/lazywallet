@@ -73,7 +73,7 @@ function App() {
       {
         username,
         password,
-      }
+      },
     );
 
     if ("error" in _result_login.data) {
@@ -124,8 +124,10 @@ function App() {
   useEffect(() => {
     setToken(localStorage.getItem("token"));
     axios.interceptors.request.use((config) => {
+      config.headers["Content-Type"] = "application/json";
       if (token) {
         config.headers["Authorization"] = "Bearer " + token;
+        config.headers["Content-Type"] = "application/graphql";
       }
 
       return config;

@@ -4,30 +4,32 @@ import ExpenseHistory from "@Components/ExpenseHistory/ExpenseHistory";
 import "./History.scss";
 import EmptyState from "../../components/EmptyState/EmptyState";
 import { withRouter } from "react-router";
+import HistoryService from "@Helper/HistoryService/HistoryService";
 
 function History() {
   const [latExps, setLatExps] = useState([]);
   const [latExpsLength, setLatExpsLength] = useState(latExps.length);
   const [range, setRange] = useState(0);
+  const [userId, setUserId] = useState("");
 
-  const getAllExpenses = useCallback(() => {
-    setLatExps(dummyDataObj.getAllExpenses());
-    setLatExpsLength(latExps.length);
-  }, [latExps]);
+  const getHistory = useCallback(() => {
+    HistoryService.getExpenses({ userId }).then((res) => {
+      if (Array.isArray(res.data.data.getExpenses))
+      setLatExps(res.data.data.getExpenses[0].expenses);
+    });
+  }, [userId]);
 
   function removeExpense(id) {
     dummyDataObj.removeExpense(id);
     if (latExpsLength > 1) setLatExpsLength(latExpsLength - 1);
-    getAllExpenses();
+    getHistory();
   }
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    getAllExpenses();
-    return () => {
-      setLatExps([]);
-    };
-  }, [latExps, getAllExpenses]);
+    setUserId(localStorage.getItem("userId"));
+    getHistory();
+  }, [getHistory]);
 
   return (
     <div className="history-container">
@@ -59,10 +61,10 @@ function History() {
           <div className="section-content">
             <div className="latest-expenses">
               {latExps.length > 0 ? (
-                latExps.map((value) => {
+                latExps.map((value, index) => {
                   return (
                     <ExpenseHistory
-                      key={value.id}
+                      key={index}
                       data={value}
                       removeExpense={removeExpense}
                     />

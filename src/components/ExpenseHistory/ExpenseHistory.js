@@ -47,7 +47,7 @@ function ExpenseHistory({ data, removeExpense }) {
               </Button>
               <Button
                 onClick={() => {
-                  removeExpense(data.id);
+                  removeExpense(data._id);
                   handleClose();
                 }}
                 color="primary"
@@ -61,7 +61,7 @@ function ExpenseHistory({ data, removeExpense }) {
         )}
       </div>
       <div className="date-time">
-        <p>{data.datetime}</p>
+        <p>{data.timestamp}</p>
       </div>
     </div>
   );
