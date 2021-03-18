@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import './Home.scss';
 import AddExpense from "@Components/AddExpense/AddExpense";
 import RegularExpenseGrid from "@Components/RegularExpenseGrid/RegularExpenseGrid";
@@ -13,6 +13,7 @@ function Homepage() {
         spentThisMonth: 0,
         spentToday: 0
     });
+    const [userId, setUserId] = useState('');
     function addNewExpense({type, title, amount}) {
         if (!title || !amount) {
             return false;
@@ -27,14 +28,15 @@ function Homepage() {
         return true;
     }
 
+    const getHomeData = useCallback(() => {
+        HomeService.getHomeData({ userId }).then(res => setSpentData(res.data.data.getHomeData));
+    },[userId]);
+
     useEffect(() => {
         window.scrollTo(0, 0);
-        const userId = localStorage.getItem('userId');
-        HomeService.getHomeData({ userId }).then(res => setSpentData(res.data.data.getHomeData));
-
-        return (() => {
-        });
-    }, []);
+        setUserId(localStorage.getItem('userId'));
+        getHomeData();
+    }, [getHomeData]);
 
     return (
         <div className="home">

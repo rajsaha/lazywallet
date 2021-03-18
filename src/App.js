@@ -61,7 +61,7 @@ function App() {
     async function login({username, password}) {
         if (!username || !password) return;
 
-        const _result_login = await axios.post(`http://localhost:8080/login`, {
+        const _result_login = await axios.post(`${process.env.REACT_APP_API_DOMAIN}/login`, {
             username,
             password
         });
@@ -90,7 +90,7 @@ function App() {
     async function signup({email, username, password}) {
         if (!email || !username || !password) return;
 
-        const _result_signup = await axios.post(`http://localhost:8080/signup`, {
+        const _result_signup = await axios.post(`${process.env.REACT_APP_API_DOMAIN}/signup`, {
             email,
             username,
             password

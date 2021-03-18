@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const RegularExpenseService = (() => {
     const getRegularExpenses = async (input) => {
-        const _result = await axios.post('http://localhost:8080/graphql', {
+        const _result = await axios.post(`${process.env.REACT_APP_API_DOMAIN}/graphql`, {
             query: `
             query {
               getRegularExpenses(pageNo: 1, size: 10, skip: 0, userId: "${input.userId}") {
