@@ -1,9 +1,12 @@
-import axios from 'axios';
+import axios from "axios";
 
 const RegularExpenseService = (() => {
-    const getRegularExpenses = async (input) => {
-        const _result = await axios.post(`${process.env.REACT_APP_API_DOMAIN}/graphql`, {
-            query: `
+  const getRegularExpenses = async (input) => {
+    try {
+      const _result = await axios.post(
+        `${process.env.REACT_APP_API_DOMAIN}/graphql`,
+        {
+          query: `
             query {
               getRegularExpenses(pageNo: 1, size: 10, skip: 0, userId: "${input.userId}") {
                 regExpenses {
@@ -21,14 +24,18 @@ const RegularExpenseService = (() => {
                   timestamp
                 }
               }
-            }`
-        });
+            }`,
+        }
+      );
 
-        return _result;
+      return _result;
+    } catch (error) {
+      console.error(error);
     }
-    return {
-        getRegularExpenses
-    }
+  };
+  return {
+    getRegularExpenses,
+  };
 })();
 
 export default RegularExpenseService;

@@ -1,0 +1,10 @@
+**/node_modules
+.env.development
+.env.production
+package.json
+package-lock.json
+**/.idea
+README.md
+craco.config.js
+.gitignore
+.eslintcache

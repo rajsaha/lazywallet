@@ -38,10 +38,11 @@ function AddExpense({
                         _amount = '',
                         _repeat = false,
                         _time = '12:00',
-                        _days = daysArray
+                        _days = daysArray,
+                        expenseTypes = []
                     }) {
 
-    const useStyles = makeStyles((theme) => ({
+    const useStyles = makeStyles(() => ({
         container: {
             display: 'flex',
             flexWrap: 'wrap',
@@ -115,17 +116,11 @@ function AddExpense({
                                          error={!!formik.touched.type && !!formik.errors.type}>
                                 <InputLabel>Type</InputLabel>
                                 <Select name="type" label="Type" {...formik.getFieldProps('type')}>
-                                    <MenuItem value={0}>Food</MenuItem>
-                                    <MenuItem value={1}>Gift</MenuItem>
-                                    <MenuItem value={2}>Medical</MenuItem>
-                                    <MenuItem value={3}>Home</MenuItem>
-                                    <MenuItem value={4}>Transportation</MenuItem>
-                                    <MenuItem value={5}>Personal</MenuItem>
-                                    <MenuItem value={6}>Pets</MenuItem>
-                                    <MenuItem value={7}>Utilities</MenuItem>
-                                    <MenuItem value={8}>Travel</MenuItem>
-                                    <MenuItem value={9}>Debt</MenuItem>
-                                    <MenuItem value={10}>Other</MenuItem>
+                                    {
+                                        expenseTypes.map((expenseType, index) => {
+                                            return (<MenuItem key={index} value={expenseType.typeId}>{expenseType.typeDesc}</MenuItem>);
+                                        })
+                                    }
                                 </Select>
                                 {(formik.touched.type && formik.errors.type) ?
                                     <FormHelperText>Required</FormHelperText> : formik.errors.type}
