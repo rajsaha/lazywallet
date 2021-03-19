@@ -17,6 +17,7 @@ function RegularExpense({
   isEditable = false,
   removeRegularExpense,
   updateRegularExpense,
+  expenseTypes
 }) {
   const [isLoading, setIsLoading] = useState(false);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
@@ -151,12 +152,13 @@ function RegularExpense({
         >
           <DialogTitle id="form-dialog-title">Update Expense</DialogTitle>
           <AddExpense
+            expenseTypes={expenseTypes}
             expenseCallback={updateRegularExpense}
             dialogCancelCallback={handleUpdateDialogClose}
             buttonLabel="update"
             showButton={false}
             _id={data.id}
-            _type={data.typeId}
+            _typeId={data.typeId}
             _title={data.title}
             _amount={data.amount}
             _repeat={data.repeat}

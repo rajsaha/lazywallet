@@ -25,18 +25,26 @@ const HomeService = (() => {
 
   const createExpense = async (input) => {
     try {
-      const _result = await axios.post(
-        `${process.env.REACT_APP_API_DOMAIN}/graphql?`,
-        {
-          mutation: `
-                  mutation {
-                      createExpense (input: {userId: "${input.userId}", typeId: "${input.typeId}", title: "${input.title}", amount: ${input.amount}}) {
-                        _id
-                      }
-                  }
-                  `,
+      const mutation = `
+      mutation ($userId: ID, $typeId: ID, $title: String, $amount: Int) {
+        createExpense (input: {userId: $userId, typeId: $typeId, title: $title, amount: $amount}) {
+          _id
         }
-      );
+      }`;
+
+      const _result = await axios({
+        method: "post",
+        url: `${process.env.REACT_APP_API_DOMAIN}/graphql?`,
+        data: JSON.stringify({
+          query: mutation,
+          variables: {
+            userId: input.userId,
+            typeId: input.typeId,
+            title: input.title,
+            amount: input.amount,
+          },
+        }),
+      });
 
       return _result;
     } catch (error) {

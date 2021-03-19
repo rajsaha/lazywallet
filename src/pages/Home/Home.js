@@ -16,11 +16,6 @@ function Homepage() {
   const [expenseTypes, setExpenseTypes] = useState([]);
 
   async function addNewExpense({ typeId, title, amount }) {
-      console.log({typeId, title, amount})
-    if (!typeId || !title || !amount) {
-      return false;
-    }
-
     const _result = await HomeService.createExpense({
       userId,
       typeId,
@@ -28,9 +23,8 @@ function Homepage() {
       amount,
     });
 
-    console.log(_result);
-
-    // if ('error' in _result) return false;
+    if ('error' in _result.data) return false;
+    getHomeData();
     return true;
   }
 

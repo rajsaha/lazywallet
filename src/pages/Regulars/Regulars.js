@@ -24,25 +24,24 @@ function Regulars() {
   };
 
   const getRegExps = useCallback(() => {
-    RegularExpenseService.getRegularExpenses({ userId }).then((res) => {
+    RegularExpenseService.getRegularExpenses({ userId, pageNo: 1, size: 100, skip: 0 }).then((res) => {
       if (Array.isArray(res.data.data.getRegularExpenses))
         setRegExps(res.data.data.getRegularExpenses[0].regExpenses);
     });
   }, [userId]);
 
-  function addRegularExpense({ type, title, amount, repeat, time, days }) {
-    if (!title || !amount) {
-      return false;
-    }
-    dummyDataObj.addRegularExpense({
-      type: type,
-      title: title,
-      amount: amount,
-      repeat: repeat,
-      time: time,
-      days: days,
+  async function addRegularExpense({ typeId, title, amount, repeat, time, days }) {
+    const _result = await RegularExpenseService.createRegularExpense({
+      userId,
+      typeId,
+      title,
+      amount,
+      repeat,
+      time,
+      days
     });
-    setRegExpsLength(regExpsLength + 1);
+
+    if ('error' in _result.data) return false;
     getRegExps();
     return true;
   }
@@ -108,7 +107,8 @@ function Regulars() {
                   regExps.map((value, index) => {
                     return (
                       <RegularExpense
-                        key={value.id}
+                        expenseTypes={expenseTypes}
+                        key={index}
                         data={value}
                         isEditable={true}
                         removeRegularExpense={removeRegularExpense}

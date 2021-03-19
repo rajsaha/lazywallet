@@ -9,7 +9,7 @@ function RegularExpenseGrid() {
   const userId = localStorage.getItem("userId");
 
   useEffect(() => {
-    RegularExpenseService.getRegularExpenses({ userId }).then((res) => {
+    RegularExpenseService.getRegularExpenses({ userId, pageNo: 1, size: 100, skip: 0 }).then((res) => {
       setRegExps(res.data.data.getRegularExpenses[0].regExpenses);
     });
   }, [userId]);
