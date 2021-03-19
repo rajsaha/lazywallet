@@ -46,29 +46,27 @@ function Regulars() {
     return true;
   }
 
-  function updateRegularExpense({
+  async function updateRegularExpense({
     id,
-    type,
+    typeId,
     title,
     amount,
     repeat,
     time,
     days,
   }) {
-    if (!title || !amount) {
-      return false;
-    }
-    dummyDataObj.updateRegularExpense({
-      id: id,
-      type: type,
+    const _result = await RegularExpenseService.updateRegularExpense({
+      id,
+      userId,
+      typeId: typeId,
       title: title,
       amount: amount,
       repeat: repeat,
       time: time,
       days: days,
     });
-    setRegExpsLength(regExpsLength + 1);
-    setRegExpsLength(regExpsLength - 1);
+
+    if ('error' in _result.data) return false;
     getRegExps();
     return true;
   }
