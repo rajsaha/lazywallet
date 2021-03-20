@@ -67,7 +67,7 @@ function RegularExpense({
       <div className="top">
         <div className="details-grid">
           <div className="expense-icon">
-            <ExpenseIcon icon={data.typeDesc} />
+            <ExpenseIcon icon={data.typeDesc.toString().toLowerCase()} />
           </div>
 
           <div className="amount">{data.amount}</div>
@@ -168,7 +168,7 @@ function RegularExpense({
         ""
       )}
       <div className="expense-icon">
-        <ExpenseIcon icon={data.typeDesc} />
+        <ExpenseIcon icon={data.typeDesc.toString().toLowerCase()} />
       </div>
 
       <p className="title">{data.title}</p>

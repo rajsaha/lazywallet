@@ -19,7 +19,7 @@ function ExpenseHistory({ data, removeExpense }) {
     <div className="expense-history-container">
       <div className="details-grid">
         <div className="expense-icon">
-          <ExpenseIcon icon={data.typeDesc} />
+          <ExpenseIcon icon={data.typeDesc.toString().toLowerCase()} />
         </div>
 
         <div className="amount">{data.amount}</div>
