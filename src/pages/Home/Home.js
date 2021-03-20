@@ -5,6 +5,7 @@ import RegularExpenseGrid from "@Components/RegularExpenseGrid/RegularExpenseGri
 import SpentOn from "@Components/SpentOn/SpentOn";
 import { withRouter } from "react-router";
 import HomeService from "@Helper/HomeService/HomeService";
+import RegularExpenseService from "@Helper/RegularExpenseService/RegularExpenseService";
 
 function Homepage() {
   const [spentData, setSpentData] = useState({
@@ -14,25 +15,41 @@ function Homepage() {
   });
   const [userId, setUserId] = useState("");
   const [expenseTypes, setExpenseTypes] = useState([]);
+  const [regExps, setRegExps] = useState([]);
 
-  async function addNewExpense({ typeId, title, amount }) {
-    const _result = await HomeService.createExpense({
-      userId,
-      typeId,
-      title,
-      amount,
-    });
-
-    if ('error' in _result.data) return false;
-    getHomeData();
-    return true;
-  }
-
-  const getHomeData = useCallback(() => {
+  const getHomeData = useCallback((userId) => {
     HomeService.getHomeData({ userId }).then((res) =>
       setSpentData(res.data.data.getHomeData)
     );
-  }, [userId]);
+  }, []);
+
+  const addNewExpense = useCallback(
+    async ({ typeId, title, amount }) => {
+      const _result = await HomeService.createExpense({
+        userId,
+        typeId,
+        title,
+        amount,
+      });
+
+      if ("error" in _result.data) return false;
+      getHomeData(userId);
+      return true;
+    },
+    [userId, getHomeData]
+  );
+
+  const getRegularExpenses = useCallback((userId) => {
+    RegularExpenseService.getRegularExpenses({
+      userId,
+      pageNo: 1,
+      size: 100,
+      skip: 0,
+    }).then((res) => {
+      if (Array.isArray(res.data.data.getRegularExpenses))
+        setRegExps(res.data.data.getRegularExpenses[0].regExpenses);
+    });
+  }, []);
 
   const getExpenseTypes = useCallback(() => {
     HomeService.getExpenseTypes().then((res) =>
@@ -40,12 +57,17 @@ function Homepage() {
     );
   }, []);
 
+  const getData = useCallback((userId) => {
+    getHomeData(userId);
+    getRegularExpenses(userId);
+    getExpenseTypes();
+  }, [getHomeData, getRegularExpenses, getExpenseTypes]);
+
   useEffect(() => {
     window.scrollTo(0, 0);
     setUserId(localStorage.getItem("userId"));
-    getHomeData();
-    getExpenseTypes();
-  }, [getHomeData, getExpenseTypes]);
+    if (userId) getData(userId);
+  }, [userId, getData]);
 
   return (
     <div className="home">
@@ -60,7 +82,10 @@ function Homepage() {
           <h1>Regular Expenses</h1>
         </div>
         <div className="section-content">
-          <RegularExpenseGrid></RegularExpenseGrid>
+          <RegularExpenseGrid
+            regExps={regExps}
+            addExpenseCallback={addNewExpense}
+          ></RegularExpenseGrid>
         </div>
       </div>
 

@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { withRouter } from "react-router";
 import "./Regulars.scss";
-import dummyDataObj from "@Helper/dummy-data/dummy-data.service";
 import RegularExpense from "@Components/RegularExpense/RegularExpense";
 import AddRegularExpense from "@Components/AddRegularExpense/AddRegularExpense";
 import EmptyState from "@Components/EmptyState/EmptyState";
@@ -10,7 +9,6 @@ import RegularExpenseService from "@Helper/RegularExpenseService/RegularExpenseS
 
 function Regulars() {
   const [regExps, setRegExps] = useState([]);
-  const [regExpsLength, setRegExpsLength] = useState(0);
   const [showDialog, setShowDialog] = useState(false);
   const [userId, setUserId] = useState("");
   const [expenseTypes, setExpenseTypes] = useState([]);
@@ -24,13 +22,25 @@ function Regulars() {
   };
 
   const getRegExps = useCallback(() => {
-    RegularExpenseService.getRegularExpenses({ userId, pageNo: 1, size: 100, skip: 0 }).then((res) => {
+    RegularExpenseService.getRegularExpenses({
+      userId,
+      pageNo: 1,
+      size: 100,
+      skip: 0,
+    }).then((res) => {
       if (Array.isArray(res.data.data.getRegularExpenses))
         setRegExps(res.data.data.getRegularExpenses[0].regExpenses);
     });
   }, [userId]);
 
-  async function addRegularExpense({ typeId, title, amount, repeat, time, days }) {
+  async function addRegularExpense({
+    typeId,
+    title,
+    amount,
+    repeat,
+    time,
+    days,
+  }) {
     const _result = await RegularExpenseService.createRegularExpense({
       userId,
       typeId,
@@ -38,10 +48,10 @@ function Regulars() {
       amount,
       repeat,
       time,
-      days
+      days,
     });
 
-    if ('error' in _result.data) return false;
+    if ("error" in _result.data) return false;
     getRegExps();
     return true;
   }
@@ -66,14 +76,18 @@ function Regulars() {
       days: days,
     });
 
-    if ('error' in _result.data) return false;
+    if ("error" in _result.data) return false;
     getRegExps();
     return true;
   }
 
-  function removeRegularExpense(id) {
-    dummyDataObj.removeRegularExpense(id);
-    if (regExpsLength > 1) setRegExpsLength(regExpsLength - 1);
+  async function deleteRegularExpense(id) {
+    const _result = await RegularExpenseService.deleteRegularExpense({
+      id,
+      userId,
+    });
+
+    if ("error" in _result.data) return false;
     getRegExps();
     return true;
   }
@@ -109,8 +123,8 @@ function Regulars() {
                         key={index}
                         data={value}
                         isEditable={true}
-                        removeRegularExpense={removeRegularExpense}
-                        updateRegularExpense={updateRegularExpense}
+                        deleteRegularExpenseCallback={deleteRegularExpense}
+                        updateRegularExpenseCallback={updateRegularExpense}
                       />
                     );
                   })

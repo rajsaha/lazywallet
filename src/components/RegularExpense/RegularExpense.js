@@ -5,7 +5,6 @@ import "./RegularExpense.scss";
 import { Edit, Repeat } from "@material-ui/icons";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import { DialogContentText, IconButton } from "@material-ui/core";
-import dummyDataObj from "@Helper/dummy-data/dummy-data.service";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -15,9 +14,10 @@ import AddExpense from "../AddExpense/AddExpense";
 function RegularExpense({
   data,
   isEditable = false,
-  removeRegularExpense,
-  updateRegularExpense,
-  expenseTypes
+  addExpenseCallback,
+  deleteRegularExpenseCallback,
+  updateRegularExpenseCallback,
+  expenseTypes,
 }) {
   const [isLoading, setIsLoading] = useState(false);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
@@ -36,19 +36,6 @@ function RegularExpense({
   const handleUpdateDialogClose = () => {
     setShowUpdateDialog(false);
   };
-
-  function addExpense() {
-    setIsLoading(true);
-    dummyDataObj.addExpense({
-      typeId: data.type,
-      title: data.title,
-      amount: data.amount,
-    });
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-    console.log("Adding expense");
-  }
 
   function getDaysRender(days) {
     let max = 7;
@@ -130,7 +117,7 @@ function RegularExpense({
             </Button>
             <Button
               onClick={() => {
-                const result = removeRegularExpense(data.id);
+                const result = deleteRegularExpenseCallback(data._id);
                 if (result) setShowDeleteDialog(false);
               }}
               color="primary"
@@ -153,7 +140,7 @@ function RegularExpense({
           <DialogTitle id="form-dialog-title">Update Expense</DialogTitle>
           <AddExpense
             expenseTypes={expenseTypes}
-            expenseCallback={updateRegularExpense}
+            expenseCallback={updateRegularExpenseCallback}
             dialogCancelCallback={handleUpdateDialogClose}
             buttonLabel="update"
             showButton={false}
@@ -186,7 +173,15 @@ function RegularExpense({
 
       <p className="title">{data.title}</p>
 
-      <Button size="small" variant="outlined" onClick={addExpense}>
+      <Button
+        size="small"
+        variant="outlined"
+        onClick={() => {
+          addExpenseCallback({
+            ...data
+          });
+        }}
+      >
         {isLoading ? "Adding" : "Add"}
       </Button>
     </div>
