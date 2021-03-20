@@ -7,8 +7,11 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
 
-function ExpenseHistory({ data, removeExpense }) {
+function ExpenseHistory({ data, deleteExpense }) {
+  dayjs.extend(relativeTime);
   const [showDialog, setShowDialog] = useState(false);
 
   const handleClose = () => {
@@ -47,7 +50,7 @@ function ExpenseHistory({ data, removeExpense }) {
               </Button>
               <Button
                 onClick={() => {
-                  removeExpense(data._id);
+                  deleteExpense(data._id);
                   handleClose();
                 }}
                 color="primary"
@@ -61,7 +64,7 @@ function ExpenseHistory({ data, removeExpense }) {
         )}
       </div>
       <div className="date-time">
-        <p>{data.timestamp}</p>
+        <p>{dayjs(data.timestamp).fromNow()}</p>
       </div>
     </div>
   );

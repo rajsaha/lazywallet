@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useState } from "react";
-import dummyDataObj from "@Helper/dummy-data/dummy-data.service";
 import ExpenseHistory from "@Components/ExpenseHistory/ExpenseHistory";
 import "./History.scss";
 import EmptyState from "../../components/EmptyState/EmptyState";
@@ -8,7 +7,6 @@ import HistoryService from "@Helper/HistoryService/HistoryService";
 
 function History() {
   const [latExps, setLatExps] = useState([]);
-  const [latExpsLength, setLatExpsLength] = useState(latExps.length);
   const [range, setRange] = useState(0);
   const [userId, setUserId] = useState("");
 
@@ -19,10 +17,15 @@ function History() {
     });
   }, [userId]);
 
-  function removeExpense(id) {
-    dummyDataObj.removeExpense(id);
-    if (latExpsLength > 1) setLatExpsLength(latExpsLength - 1);
+  async function deleteExpense(id) {
+    const _result = await HistoryService.deleteExpense({
+      id,
+      userId,
+    });
+
+    if ("error" in _result.data) return false;
     getHistory();
+    return true;
   }
 
   useEffect(() => {
@@ -66,7 +69,7 @@ function History() {
                     <ExpenseHistory
                       key={index}
                       data={value}
-                      removeExpense={removeExpense}
+                      deleteExpense={deleteExpense}
                     />
                   );
                 })

@@ -35,8 +35,36 @@ const HistoryService = (() => {
     }
   };
 
+  const deleteExpense = async (input) => {
+    try {
+      const mutation = `
+      mutation ($id: ID, $userId: ID) {
+        deleteExpense (input: {id: $id, userId: $userId}) {
+          _id
+        }
+      }`;
+
+      const _result = await axios({
+        method: "post",
+        url: `${process.env.REACT_APP_API_DOMAIN}/graphql?`,
+        data: JSON.stringify({
+          query: mutation,
+          variables: {
+            id: input.id,
+            userId: input.userId,
+          },
+        }),
+      });
+
+      return _result;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return {
     getExpenses,
+    deleteExpense
   };
 })();
 
