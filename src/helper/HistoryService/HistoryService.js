@@ -11,17 +11,21 @@ const HistoryService = (() => {
             getExpenses(userId: "${input.userId}", size: 1000, skip: 0, period: "everything") {
               expenses {
                 _id
-                typeId
-                typeDesc
-                title
-                amount
-                timestamp
+                records {
+                  _id
+                  typeId
+                  typeDesc
+                  title
+                  amount
+                  timestamp
+                  dateCreatedAt
+                }
+              }
+              dates {
+                _id
               }
               count {
                 count
-              }
-              total {
-                total
               }
             }
           }
@@ -64,7 +68,7 @@ const HistoryService = (() => {
 
   return {
     getExpenses,
-    deleteExpense
+    deleteExpense,
   };
 })();
 

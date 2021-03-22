@@ -4,6 +4,7 @@ import "./History.scss";
 import EmptyState from "../../components/EmptyState/EmptyState";
 import { withRouter } from "react-router";
 import HistoryService from "@Helper/HistoryService/HistoryService";
+import dayjs from "dayjs";
 
 function History() {
   const [latExps, setLatExps] = useState([]);
@@ -12,8 +13,11 @@ function History() {
 
   const getHistory = useCallback(() => {
     HistoryService.getExpenses({ userId }).then((res) => {
-      if (Array.isArray(res.data.data.getExpenses))
-      setLatExps(res.data.data.getExpenses[0].expenses);
+      if (Array.isArray(res.data.data.getExpenses)) {
+        for (let item of res.data.data.getExpenses[0].expenses) {
+          setLatExps((latExps) => [...latExps, item]);
+        }
+      }
     });
   }, [userId]);
 
@@ -64,13 +68,22 @@ function History() {
           <div className="section-content">
             <div className="latest-expenses">
               {latExps.length > 0 ? (
-                latExps.map((value, index) => {
+                latExps.map((value, outerIndex) => {
                   return (
-                    <ExpenseHistory
-                      key={index}
-                      data={value}
-                      deleteExpense={deleteExpense}
-                    />
+                    <div key={outerIndex}>
+                      <h1>{dayjs(value._id).format("MMMM D, YYYY")}</h1>
+                      {value.records.map((item, innerIndex) => {
+                        return (
+                          <>
+                            <ExpenseHistory
+                              key={innerIndex}
+                              data={item}
+                              deleteExpense={deleteExpense}
+                            />
+                          </>
+                        );
+                      })}
+                    </div>
                   );
                 })
               ) : (
